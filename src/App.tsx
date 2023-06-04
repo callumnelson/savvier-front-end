@@ -22,6 +22,7 @@ import './App.css'
 
 // types
 import { Profile, User } from './types/models'
+import Transactions from './pages/Transactions/Transactions'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -51,6 +52,8 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
+  if (user && !profile) return <h1>Loading...</h1>
+
   return (
     <>
     {user && profile
@@ -63,7 +66,16 @@ function App(): JSX.Element {
     }
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/dashboard" element={<Dashboard user={user}/>}/>
+      <Route path="/dashboard" 
+        element={
+          <Dashboard profile={profile}/>
+        }
+      />
+      <Route path="/transactions" 
+        element={
+          <Transactions profile={profile}/>
+        }
+      />
       <Route
         path="/auth/signup"
         element={<Signup handleAuthEvt={handleAuthEvt} />}

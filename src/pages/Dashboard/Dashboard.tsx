@@ -2,20 +2,22 @@
 import styles from './Dashboard.module.css'
 
 // types
-import { Profile, User } from '../../types/models';
+import { Profile } from '../../types/models';
+import TopNav from '../../components/PageHeader/PageHeader';
 
 interface DashboardProps {
-  user: User | null;
+  profile: Profile | null;
 }
 
 const Dashboard = (props: DashboardProps) => {
-  const { user } = props
+  const { profile } = props
+
+  if (!profile) return <h1>Loading...</h1>
 
   return (
-    <div className={styles.container}>
-      <h1>Hello, {user?.name}</h1>
-      <h1>Dashboard goes here</h1>
-    </div>
+    <main className={styles.container}>
+      <TopNav pageName='Dashboard'></TopNav>
+    </main>
   )
 }
  
