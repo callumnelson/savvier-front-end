@@ -1,28 +1,35 @@
 /* ---------===== custom models ====--------- */
 export interface Transaction {
+  id: number;
   accountId: number;
   profileId: number;
-  transactionDate: Date;
+  transactionDate: string;
   description: string;
   amount: number;
   category: string;
   subCategory: string;
   codingStatus: 'Pending' | 'Saved';
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Account {
+  id: number;
   name: string;
   type: 'Credit Card' | 'Checking' | 'Savings' | 'Other';
   profileId: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 
 /* ---------===== auth models =====--------- */
 
 export interface Profile {
+  id: number;
   name: string;
   photo?: string;
-  id: number;
+  userId: number;
   createdAt: string;
   updatedAt: string;
   accounts: Account[];

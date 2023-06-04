@@ -1,10 +1,22 @@
 // npm modules
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 // css
 import styles from './Landing.module.css'
 
-const Landing = (): JSX.Element => {
+// types
+import { User } from '../../types/models';
+
+interface LandingProps {
+  user: User | null;
+}
+
+const Landing = (props: LandingProps): JSX.Element => {
+  const { user } = props
+  const navigate = useNavigate()
+
+  if (user) navigate('/dashboard')
 
   return (
     <main className={styles.container}>

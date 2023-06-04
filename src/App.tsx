@@ -65,7 +65,7 @@ function App(): JSX.Element {
     />
     }
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Landing user={user} />} />
       <Route path="/dashboard" 
         element={
           <Dashboard profile={profile}/>

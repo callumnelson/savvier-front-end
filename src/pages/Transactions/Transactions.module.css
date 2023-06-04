@@ -1,0 +1,56 @@
+.table {
+  width: 90%;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  font-weight: 600;
+  border-bottom: 0.5px solid var(--white);
+}
+
+/* Generic cell */
+.header > div, .row > div {
+  padding: 5px;
+  display: flex;
+}
+
+.header > div:nth-child(1), 
+.row > div:nth-child(1) {
+  width: 10%;
+}
+
+.header > div:nth-child(2),
+.row > div:nth-child(2) {
+  width: 35%;
+}
+
+.header > div:nth-child(3),
+.row > div:nth-child(3) {
+  width: 15%;
+  justify-content: center;
+}
+
+.header > div:nth-child(4),
+.row > div:nth-child(4) {
+  width: 20%;
+}
+
+.header > div:nth-child(5),
+.row > div:nth-child(5) {
+  width: 20%;
+}
+
+.row {
+  display: flex;
+}
+
+.row > div {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.row p {
+  white-space: nowrap;
+}
