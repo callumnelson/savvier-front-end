@@ -1,10 +1,26 @@
 .container {
   width: 15%;
   height: 100%;
+  display: flex;
+  padding: 30px 0;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   border-right: 1px solid white;
+}
+
+.container ul {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  padding: 0;
 }
 
 .container a,
 .container a:visited {
   color: #00d8ff
+}
+
+.container img {
+  width: 50%;
 }
