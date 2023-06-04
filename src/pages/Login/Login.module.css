@@ -5,7 +5,12 @@ input {
   width: 300px;
 }
 
+input[type="file"] {
+  padding: 0;
+}
+
 .container {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;

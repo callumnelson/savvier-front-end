@@ -1,0 +1,10 @@
+.container {
+  width: 15%;
+  height: 100%;
+  border-right: 1px solid white;
+}
+
+.container a,
+.container a:visited {
+  color: #00d8ff
+}
