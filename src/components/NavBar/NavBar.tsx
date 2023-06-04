@@ -13,7 +13,7 @@ import { Profile, User } from '../../types/models'
 interface NavBarProps {
   user: User;
   handleLogout: () => void;
-  profile: Profile | null;
+  profile: Profile;
 }
 
 const NavBar = (props: NavBarProps): JSX.Element => {
@@ -21,8 +21,11 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   
   return (
     <nav className={styles.container}>
-      <img src={profile?.photo ?? defaultProfile } alt="" />
-      <ul>
+      <div className={styles.info}>
+        <img src={profile?.photo ?? defaultProfile } alt="" />
+        <h1>{user.name}</h1>
+      </div>
+      <ul className={styles.destinations}>
         <li>
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>

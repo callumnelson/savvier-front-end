@@ -53,7 +53,7 @@ function App(): JSX.Element {
 
   return (
     <>
-    {user 
+    {user && profile
       && 
     <NavBar 
       user={user} 
@@ -62,7 +62,7 @@ function App(): JSX.Element {
     />
     }
     <Routes>
-      <Route path="/" element={<Landing user={user} />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/dashboard" element={<Dashboard user={user}/>}/>
       <Route
         path="/auth/signup"

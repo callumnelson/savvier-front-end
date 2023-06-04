@@ -9,7 +9,13 @@
   border-right: 1px solid white;
 }
 
-.container ul {
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.destinations {
   display: flex;
   list-style: none;
   flex-direction: column;
