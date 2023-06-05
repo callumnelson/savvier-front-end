@@ -51,8 +51,8 @@ function App(): JSX.Element {
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
-
-  if (!profile && user) return <h1>Loading...</h1>
+  
+  if (user && !profile) return <h1>Loading...</h1>
 
   return (
     <>
@@ -68,16 +68,20 @@ function App(): JSX.Element {
       <Route path="/" element={<Landing user={user} />} />
       <Route path="/dashboard" 
         element={
-          <Dashboard 
-            profile={profile}
-          />
+          <ProtectedRoute user={user}>
+            <Dashboard 
+              profile={profile}
+            />
+          </ProtectedRoute>
         }
       />
       <Route path="/transactions" 
         element={
-          <Transactions 
-            profile={profile}
-          />
+          <ProtectedRoute user={user}>
+            <Transactions 
+              profile={profile}
+            />
+          </ProtectedRoute>
         }
       />
       <Route

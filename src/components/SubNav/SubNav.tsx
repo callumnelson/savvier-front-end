@@ -14,7 +14,7 @@ const SubNav = (props: SubNavProps) => {
   return (
     <div className={styles.container}>
       <div>
-        <h3>Accounts</h3>
+        <h3>Accounts ({accounts?.length})</h3>
       </div>
       {accounts?.map(acc => (
         <div key={acc.id}

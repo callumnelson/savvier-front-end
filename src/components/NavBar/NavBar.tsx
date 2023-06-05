@@ -22,7 +22,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   return (
     <nav className={styles.container}>
       <div className={styles.info}>
-        <img src={profile?.photo ?? defaultProfile } alt="" />
+        <img src={profile.photo ?? defaultProfile } alt="" />
         <h1>{user.name}</h1>
       </div>
       <ul className={styles.destinations}>

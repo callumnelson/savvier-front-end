@@ -27,10 +27,17 @@ interface TransactionDisplay {
 
 const Transactions = (props: TransactionsProps) => {
   const { profile } = props
-  const [selectedAccount, setSelectedAccount] = useState<number | undefined>(profile?.accounts[0].id)
-  
+  const [
+    selectedAccount, 
+    setSelectedAccount
+  ] = useState<number | undefined>(profile?.accounts[0].id)
+  const [
+    displayTransactions, 
+    setDisplayTransactions
+  ] = useState<Transaction[] | undefined>([])
+
   if (!profile) return <h1>Loading...</h1>
-  
+
   const headers = [
     'Date',
     'Description',
