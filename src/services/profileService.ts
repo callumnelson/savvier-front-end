@@ -18,7 +18,11 @@ async function getUserProfile(): Promise<Profile> {
   const res = await fetch(`${BASE_URL}/get-user-profile`, {
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
-  return await res.json() as Profile
+  const profile = await res.json() as Profile
+  profile.profileTransactions.forEach( t => {
+    t.formattedTransDate = new Date(t.transactionDate)
+  })
+  return profile
 }
 
 async function addPhoto(photoData: PhotoFormData): Promise<string> {

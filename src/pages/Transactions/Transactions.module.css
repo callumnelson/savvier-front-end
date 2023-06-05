@@ -3,9 +3,18 @@
   display: flex;
 }
 
-.table {
+.tableContainer {
   width: 85%;
   padding: 30px;
+}
+
+.tableContainer nav {
+  display: flex;
+  justify-content: end;
+}
+
+.table {
+  width: 100%;
 }
 
 .header {

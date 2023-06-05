@@ -13,6 +13,10 @@ export interface Transaction {
   updatedAt: string;
 }
 
+export interface StateTransaction extends Transaction {
+  formattedTransDate: Date;
+}
+
 export interface Account {
   id: number;
   name: string;
@@ -33,7 +37,7 @@ export interface Profile {
   createdAt: string;
   updatedAt: string;
   accounts: Account[];
-  profileTransactions: Transaction[];
+  profileTransactions: StateTransaction[];
 }
 
 export interface User {
