@@ -16,22 +16,17 @@ interface TransactionsProps {
   profile: Profile;
 }
 
-interface TransactionDisplay {
-  id: number;
-  transactionDate: string;
-  description: string;
-  amount: string;
-  category: string;
-  subCategory: string;
-}
-
 const Transactions = (props: TransactionsProps) => {
   const { profile } = props
   const [
     selectedAccount, setSelectedAccount
   ] = useState<number>(profile.accounts[0].id)
   const [displayTransactions, setDisplayTransactions
-  ] = useState<Transaction[]>(profile.profileTransactions)
+  ] = useState<Transaction[]>(
+    profile.profileTransactions.filter(t => t.accountId === profile.accounts[0].id)
+  )
+
+  console.log(profile.profileTransactions)
 
   const headers = [
     'Date',
@@ -41,16 +36,13 @@ const Transactions = (props: TransactionsProps) => {
     'Sub-Category'
   ]
 
-  const rows = profile.profileTransactions.map( (t: Transaction): TransactionDisplay => {
-    return {
-      id: t.id,
-      transactionDate: new Date(t.transactionDate).toLocaleDateString(),
-      description: t.description,
-      amount: currency(t.amount).format(),
-      category: t.category,
-      subCategory: t.subCategory,
-    }
-  })
+  const handleAccountClick = (evt: React.MouseEvent<HTMLDivElement>): void => {
+    console.log(profile.profileTransactions)
+    console.log(evt.currentTarget.id)
+    const newAccountId = parseInt(evt.currentTarget.id)
+    setSelectedAccount(newAccountId)
+    setDisplayTransactions(profile.profileTransactions.filter(t => t.accountId === newAccountId))
+  }
 
   return (
     <main className={styles.container}>
@@ -59,23 +51,24 @@ const Transactions = (props: TransactionsProps) => {
         <SubNav 
           accounts={profile.accounts}
           selectedAccount={selectedAccount}
+          handleAccountClick={handleAccountClick}
         />
         <div className={styles.table}>
           <div className={styles.header}>
             {headers.map( (h) => (
-              <div>
+              <div key={h}>
                 <p>{h}</p>
               </div>
             ))}
           </div>
           <div className={styles.rows}>
-            {rows.map(r => (
-              <div key={r.id} className={styles.row}>
-                <div><p>{r.transactionDate}</p></div>
-                <div><p>{r.description}</p></div>
-                <div><p>{r.amount}</p></div>
-                <div><p>{r.category}</p></div>
-                <div><p>{r.subCategory}</p></div>
+            {displayTransactions.map(t => (
+              <div key={t.id} className={styles.row}>
+                <div><p>{new Date(t.transactionDate).toLocaleDateString()}</p></div>
+                <div><p>{t.description}</p></div>
+                <div><p>{currency(t.amount).format()}</p></div>
+                <div><p>{t.category}</p></div>
+                <div><p>{t.subCategory}</p></div>
               </div>
             ))}
           </div>
