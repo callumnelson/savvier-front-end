@@ -11,6 +11,7 @@ import { Profile, StateTransaction } from '../../types/models'
 // components
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SubNav from '../../components/SubNav/SubNav';
+import UploadTransModal from '../../components/UploadTransModal/UploadTransModal';
 
 interface TransactionsProps {
   profile: Profile;
@@ -40,6 +41,7 @@ const Transactions = (props: TransactionsProps) => {
   const [search, setSearch] = useState<string>('')
   const [sort, setSort] = useState<SortObject>({schemaName: 'formattedTransDate', order: 1})
   const [filter, setFilter] = useState<FilterObject>({category: "", subCategory: ""})
+  const [showModal, setShowModal] = useState<boolean>(false)
   
   const headers = [
     'Date',
@@ -48,6 +50,8 @@ const Transactions = (props: TransactionsProps) => {
     'Category',
     'Sub-Category'
   ]
+
+  const categories = [ '-', 'Fun' , 'Food/Necessities' ,	'Housing'	, 'Transportation' , 'Utilities' , 'Medical/Health' , 'Savings' , 'Insurance' , 'Personal' , 'Misc' , 'Income']
 
   const handleAccountClick = (evt: React.MouseEvent<HTMLDivElement>): void => {
     console.log(profile.profileTransactions)
@@ -76,6 +80,7 @@ const Transactions = (props: TransactionsProps) => {
         <nav>
           <div>
             <button
+              onClick={(): void => setShowModal(!showModal)}
             >
               Add Transactions
             </button>
@@ -107,7 +112,18 @@ const Transactions = (props: TransactionsProps) => {
                   <div><p>{t.formattedTransDate?.toLocaleDateString()}</p></div>
                   <div><p>{t.description}</p></div>
                   <div><p>{currency(t.amount).format()}</p></div>
-                  <div><p>{t.category}</p></div>
+                  <div>
+                    <select name="category" id="category">
+                      {categories.map(category => (
+                        <option 
+                          value={category}
+                          selected={t.category === category}
+                        >
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div><p>{t.subCategory}</p></div>
                 </div>
               ))}
@@ -115,6 +131,11 @@ const Transactions = (props: TransactionsProps) => {
           </div>
         </div>
       </section>
+      <UploadTransModal
+        show={showModal}
+        setShowModal={setShowModal}
+        selectedAccount={selectedAccount}
+      />
     </main>
   )
 }

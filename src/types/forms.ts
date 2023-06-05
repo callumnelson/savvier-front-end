@@ -1,5 +1,15 @@
 /* ---------==== custom forms ====--------- */
 
+export interface UploadTransaction {
+  amount: string;
+  description: string;
+  transactionDate: string;
+}
+
+export interface TransactionsFormData {
+  transactions: UploadTransaction[]
+}
+
 
 
 /* ---------===== auth forms =====--------- */

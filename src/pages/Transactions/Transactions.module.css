@@ -60,6 +60,10 @@
   display: flex;
 }
 
+.row:hover {
+  background-color: var(--storm);
+}
+
 .row > div {
   display: flex;
   flex-wrap: nowrap;
