@@ -7,11 +7,11 @@
 
 .divider {
   height: 0.5px;
-  background-color: var(--white);
+  background-color: var(--linen);
   animation: divider 1s ease forwards;
 }
 
 @keyframes divider {
   from { width: 0%; }
-  to { width: 90%; }
+  to { width: calc(100% - 60px); }
 }

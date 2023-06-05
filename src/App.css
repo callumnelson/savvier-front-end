@@ -10,6 +10,11 @@ body {
   box-sizing: border-box;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
+  --storm: #565c5e;
+  --forestGreen: #455954;
+  --leather: #9d7463;
+  --blue: #b5c2c7;
+  --linen: #dfdbd8;
   --white: rgba(255, 255, 255, 0.87);
   --backgroundColor: #242424;
   color: var(--white);
@@ -24,6 +29,10 @@ body {
 #root {
   display: flex;
   height: 100%;
+}
+
+h2, h3, h4, h5, h6, p {
+  margin: 0;
 }
 
 a,

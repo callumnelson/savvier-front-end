@@ -1,17 +1,23 @@
+.container section {
+  width: 100%;
+  display: flex;
+}
+
 .table {
-  width: 90%;
+  width: 85%;
+  padding: 30px;
 }
 
 .header {
   display: flex;
   width: 100%;
   font-weight: 600;
-  border-bottom: 0.5px solid var(--white);
+  border-bottom: 0.5px solid var(--linen);
 }
 
 /* Generic cell */
 .header > div, .row > div {
-  padding: 5px;
+  padding: 10px 5px;
   display: flex;
 }
 

@@ -1,0 +1,19 @@
+.container {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid var(--linen);
+}
+
+.container div {
+  display: flex;
+  padding: 15px 30px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.selected {
+  background-color: var(--blue);
+  color: var(--backgroundColor);
+}

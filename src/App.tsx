@@ -52,7 +52,7 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
-  if (user && !profile) return <h1>Loading...</h1>
+  if (!profile && user) return <h1>Loading...</h1>
 
   return (
     <>
@@ -68,12 +68,16 @@ function App(): JSX.Element {
       <Route path="/" element={<Landing user={user} />} />
       <Route path="/dashboard" 
         element={
-          <Dashboard profile={profile}/>
+          <Dashboard 
+            profile={profile}
+          />
         }
       />
       <Route path="/transactions" 
         element={
-          <Transactions profile={profile}/>
+          <Transactions 
+            profile={profile}
+          />
         }
       />
       <Route
