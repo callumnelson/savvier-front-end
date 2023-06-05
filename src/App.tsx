@@ -65,9 +65,13 @@ function App(): JSX.Element {
     />
     }
     <Routes>
-      <Route path="/" element={<Landing user={user} />} />
+      <Route path="/" element={
+          <Landing user={user} />
+        } 
+      />
       <Route path="/dashboard" 
         element={
+          profile &&
           <ProtectedRoute user={user}>
             <Dashboard 
               profile={profile}
@@ -77,6 +81,7 @@ function App(): JSX.Element {
       />
       <Route path="/transactions" 
         element={
+          profile && 
           <ProtectedRoute user={user}>
             <Transactions 
               profile={profile}

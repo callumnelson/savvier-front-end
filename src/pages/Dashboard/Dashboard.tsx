@@ -6,13 +6,11 @@ import { Profile } from '../../types/models';
 import TopNav from '../../components/PageHeader/PageHeader';
 
 interface DashboardProps {
-  profile: Profile | null;
+  profile: Profile;
 }
 
 const Dashboard = (props: DashboardProps) => {
   const { profile } = props
-
-  if (!profile) return <h1>Loading...</h1>
 
   return (
     <main className={styles.container}>

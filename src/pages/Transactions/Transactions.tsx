@@ -13,7 +13,7 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 import SubNav from '../../components/SubNav/SubNav';
 
 interface TransactionsProps {
-  profile: Profile | null;
+  profile: Profile;
 }
 
 interface TransactionDisplay {
@@ -28,15 +28,10 @@ interface TransactionDisplay {
 const Transactions = (props: TransactionsProps) => {
   const { profile } = props
   const [
-    selectedAccount, 
-    setSelectedAccount
-  ] = useState<number | undefined>(profile?.accounts[0].id)
-  const [
-    displayTransactions, 
-    setDisplayTransactions
-  ] = useState<Transaction[] | undefined>([])
-
-  if (!profile) return <h1>Loading...</h1>
+    selectedAccount, setSelectedAccount
+  ] = useState<number>(profile.accounts[0].id)
+  const [displayTransactions, setDisplayTransactions
+  ] = useState<Transaction[]>(profile.profileTransactions)
 
   const headers = [
     'Date',
