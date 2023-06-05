@@ -11,7 +11,6 @@ export interface TransactionsFormData {
 }
 
 
-
 /* ---------===== auth forms =====--------- */
 
 export interface LoginFormData {

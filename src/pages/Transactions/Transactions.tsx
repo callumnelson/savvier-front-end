@@ -1,6 +1,5 @@
 // npm modules
 import { ChangeEvent, useState } from 'react';
-import currency from 'currency.js';
 
 // css
 import styles from './Transactions.module.css'
@@ -10,12 +9,14 @@ import { Profile, StateTransaction } from '../../types/models'
 
 // service
 import * as accountsService from '../../services/accountsService'
+import * as transactionsService from '../../services/transactionsService'
 
 // components
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SubNav from '../../components/SubNav/SubNav';
 import UploadTransModal from '../../components/UploadTransModal/UploadTransModal'
 import { TransactionsFormData } from '../../types/forms';
+import TransactionCard from '../../components/TransactionCard/TransactionCard';
 
 interface TransactionsProps {
   profile: Profile;
@@ -87,6 +88,19 @@ const Transactions = (props: TransactionsProps) => {
     ))
   }
 
+  const handleUpdateTransaction = async (transaction: StateTransaction): Promise<void> => {
+    const updatedTrans = await transactionsService.updateTransaction(transaction)
+    setProfile({
+      ...profile,
+      profileTransactions: profile.profileTransactions.map(t => {
+        return t.id === updatedTrans.id ? updatedTrans : t
+      })
+    })
+    setDisplayTransactions(displayTransactions.map(t => {
+      return t.id === updatedTrans.id ? updatedTrans : t
+    }))
+  }
+
   return (
     <main className={styles.container}>
       <PageHeader pageName='Transactions'></PageHeader>
@@ -128,24 +142,12 @@ const Transactions = (props: TransactionsProps) => {
             </div>
             <div className={styles.rows}>
               {displayTransactions.map(t => (
-                <div key={t.id} className={styles.row}>
-                  <div><p>{t.formattedTransDate?.toLocaleDateString()}</p></div>
-                  <div><p>{t.description}</p></div>
-                  <div><p>{currency(t.amount).format()}</p></div>
-                  <div>
-                    <select name="category" id="category">
-                      {categories.map(category => (
-                        <option 
-                          value={category}
-                          selected={t.category === category}
-                        >
-                          {category}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div><p>{t.subCategory}</p></div>
-                </div>
+                <TransactionCard
+                  key={t.id}
+                  transaction={t}
+                  categories={categories}
+                  handleUpdateTransaction={handleUpdateTransaction}
+                />
               ))}
             </div>
           </div>

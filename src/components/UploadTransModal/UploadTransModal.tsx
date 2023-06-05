@@ -65,6 +65,20 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       transactions
     }
     await handleUploadTransactions(transactionFormData, selectedAccount)
+    setFile(undefined)
+    setHeaderMap({
+      transactionDate: '',
+      description: '',
+      amount: '',
+    })
+    setTemporaryData([])
+    setUploadedColumns([])
+    setShowModal(false)
+  }
+
+  const handleCloseModal = (): void => {
+    setShowModal(false)
+    setFile(undefined)
   }
 
   return (
@@ -77,7 +91,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       >
         <header>
           <span
-            onClick={():void => setShowModal(false)}
+            onClick={handleCloseModal}
           >
             X
           </span>
@@ -94,7 +108,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
             />
           </div>
           {
-            !!temporaryData.length &&
+            file &&
             <div className={styles.columnMapContainer}>
               <div>
                 <h4>Required Column</h4>

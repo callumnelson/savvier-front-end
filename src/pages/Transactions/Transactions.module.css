@@ -30,56 +30,33 @@
 }
 
 /* Generic cell */
-.header > div, .row > div {
+.header > div {
   padding: 10px 5px;
   display: flex;
 }
 
-.header > div:nth-child(1), 
-.row > div:nth-child(1) {
+.header > div:nth-child(1) {
   width: 10%;
 }
 
-.header > div:nth-child(2),
-.row > div:nth-child(2) {
+.header > div:nth-child(2){
   width: 35%;
 }
 
-.header > div:nth-child(3),
-.row > div:nth-child(3) {
+.header > div:nth-child(3){
   width: 15%;
   justify-content: center;
 }
 
-.header > div:nth-child(4),
-.row > div:nth-child(4) {
+.header > div:nth-child(4){
   width: 20%;
 }
 
-.header > div:nth-child(5),
-.row > div:nth-child(5) {
+.header > div:nth-child(5){
   width: 20%;
-}
-
-.row {
-  display: flex;
-}
-
-.row:hover {
-  background-color: var(--storm);
 }
 
 .rows {
   height: calc(100% - 40px);
   overflow-y: overlay;
-}
-
-.row > div {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.row p {
-  white-space: nowrap;
 }
