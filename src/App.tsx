@@ -83,7 +83,8 @@ function App(): JSX.Element {
         element={
           profile && 
           <ProtectedRoute user={user}>
-            <Transactions 
+            <Transactions
+              setProfile={setProfile}
               profile={profile}
             />
           </ProtectedRoute>

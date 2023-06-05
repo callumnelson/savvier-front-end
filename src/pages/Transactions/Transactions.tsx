@@ -8,27 +8,32 @@ import styles from './Transactions.module.css'
 // types
 import { Profile, StateTransaction } from '../../types/models'
 
+// service
+import * as accountsService from '../../services/accountsService'
+
 // components
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SubNav from '../../components/SubNav/SubNav';
-import UploadTransModal from '../../components/UploadTransModal/UploadTransModal';
+import UploadTransModal from '../../components/UploadTransModal/UploadTransModal'
+import { TransactionsFormData } from '../../types/forms';
 
 interface TransactionsProps {
   profile: Profile;
+  setProfile: (profile: Profile) => void;
 }
 
-interface SortObject {
-  schemaName: string;
-  order: number;
-}
+// interface SortObject {
+//   schemaName: string;
+//   order: number;
+// }
 
-interface FilterObject {
-  category: string;
-  subCategory: string;
-}
+// interface FilterObject {
+//   category: string;
+//   subCategory: string;
+// }
 
 const Transactions = (props: TransactionsProps) => {
-  const { profile } = props
+  const { profile, setProfile } = props
   const [
     selectedAccount, setSelectedAccount
   ] = useState<number>(profile.accounts[1].id)
@@ -39,8 +44,8 @@ const Transactions = (props: TransactionsProps) => {
     ).sort( (a, b) => b.formattedTransDate.getTime() - a.formattedTransDate.getTime())
   )
   const [search, setSearch] = useState<string>('')
-  const [sort, setSort] = useState<SortObject>({schemaName: 'formattedTransDate', order: 1})
-  const [filter, setFilter] = useState<FilterObject>({category: "", subCategory: ""})
+  // const [sort, setSort] = useState<SortObject>({schemaName: 'formattedTransDate', order: 1})
+  // const [filter, setFilter] = useState<FilterObject>({category: "", subCategory: ""})
   const [showModal, setShowModal] = useState<boolean>(false)
   
   const headers = [
@@ -65,6 +70,21 @@ const Transactions = (props: TransactionsProps) => {
     const newSearch = evt.currentTarget.value
     setSearch(newSearch)
     setDisplayTransactions(profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase())))
+  }
+
+  const handleUploadTransactions = async (transactionFormData: TransactionsFormData, accountId: number): Promise<void> => {
+    setSearch('')
+    const newTransactions = await accountsService.createTransactions(transactionFormData, accountId)
+    const newTransactionState = [...profile.profileTransactions, ...newTransactions]
+    setProfile({
+      ...profile,
+      profileTransactions: newTransactionState
+    })
+    setDisplayTransactions(newTransactionState.filter(
+      t => t.accountId === profile.accounts[1].id
+    ).sort(
+      (a, b) => b.formattedTransDate.getTime() - a.formattedTransDate.getTime()
+    ))
   }
 
   return (
@@ -135,6 +155,7 @@ const Transactions = (props: TransactionsProps) => {
         show={showModal}
         setShowModal={setShowModal}
         selectedAccount={selectedAccount}
+        handleUploadTransactions={handleUploadTransactions}
       />
     </main>
   )

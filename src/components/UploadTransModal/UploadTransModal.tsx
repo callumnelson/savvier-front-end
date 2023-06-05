@@ -11,6 +11,7 @@ interface UploadTransModalProps {
   show: boolean;
   setShowModal: (showModal: boolean) => void;
   selectedAccount: number;
+  handleUploadTransactions: (transactionFormData: TransactionsFormData, accountId: number) => Promise<void>
 }
 
 interface HeaderMap {
@@ -20,7 +21,7 @@ interface HeaderMap {
 }
 
 const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
-  const { show, setShowModal, selectedAccount } = props
+  const { show, setShowModal, selectedAccount, handleUploadTransactions } = props
   const [file, setFile] = useState<string | undefined>(undefined)
   const [headerMap, setHeaderMap] = useState<HeaderMap>({
     transactionDate: '',
@@ -52,8 +53,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
     })
   }
 
-  const handleUpload = (): void => {
-    
+  const handleUpload = async (): Promise<void> => {
     const transactions = temporaryData.map( t => {
       return {
         transactionDate: t[headerMap.transactionDate],
@@ -61,11 +61,10 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
         description: t[headerMap.description]
       } as UploadTransaction
     })
-
     const transactionFormData: TransactionsFormData = {
       transactions
     }
-    console.log(transactionFormData)
+    await handleUploadTransactions(transactionFormData, selectedAccount)
   }
 
   return (
