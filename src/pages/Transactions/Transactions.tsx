@@ -4,6 +4,9 @@ import { ChangeEvent, useState } from 'react';
 // css
 import styles from './Transactions.module.css'
 
+// data
+import { categories } from '../../data/categories'
+
 // types
 import { Profile, StateTransaction } from '../../types/models'
 
@@ -57,11 +60,7 @@ const Transactions = (props: TransactionsProps) => {
     'Sub-Category'
   ]
 
-  const categories = [ '-', 'Fun' , 'Food/Necessities' ,	'Housing'	, 'Transportation' , 'Utilities' , 'Medical/Health' , 'Savings' , 'Insurance' , 'Personal' , 'Misc' , 'Income']
-
   const handleAccountClick = (evt: React.MouseEvent<HTMLDivElement>): void => {
-    console.log(profile.profileTransactions)
-    console.log(evt.currentTarget.id)
     const newAccountId = parseInt(evt.currentTarget.id)
     setSelectedAccount(newAccountId)
     setDisplayTransactions(profile.profileTransactions.filter(t => t.accountId === newAccountId))
