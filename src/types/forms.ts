@@ -4,6 +4,8 @@ export interface UploadTransaction {
   amount: string;
   description: string;
   transactionDate: string;
+  category?: string;
+  subCategory?: string;
 }
 
 export interface TransactionsFormData {

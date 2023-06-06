@@ -18,6 +18,8 @@ interface HeaderMap {
   transactionDate: string;
   description: string;
   amount: string;
+  category: string;
+  subCategory: string;
 }
 
 const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
@@ -27,6 +29,8 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
     transactionDate: '',
     description: '',
     amount: '',
+    category: '',
+    subCategory: ''
   })
   const [uploadedColumns, setUploadedColumns] = useState<string[]>([])
   const [temporaryData, setTemporaryData] = useState<Record<string, string>[]>([])
@@ -55,11 +59,14 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
 
   const handleUpload = async (): Promise<void> => {
     const transactions = temporaryData.map( t => {
-      return {
+      const res: UploadTransaction = {
         transactionDate: t[headerMap.transactionDate],
         amount: t[headerMap.amount],
         description: t[headerMap.description]
-      } as UploadTransaction
+      }
+      if (headerMap.category) res.category = t[headerMap.category]
+      if (headerMap.subCategory) res.subCategory = t[headerMap.subCategory]
+      return res
     })
     const batches: TransactionsFormData[] = []
     try {
@@ -78,6 +85,8 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
         transactionDate: '',
         description: '',
         amount: '',
+        category: '',
+        subCategory: '',
       })
       setTemporaryData([])
       setUploadedColumns([])
@@ -93,6 +102,8 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       transactionDate: '',
       description: '',
       amount: '',
+      category: '',
+      subCategory: '',
     })
     setFile('')
   }
@@ -167,6 +178,36 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
                   id='amount'
                   onChange={handleHeaderMapChange}
                   value={headerMap.amount}
+                  required
+                >
+                  <option value="">--</option>
+                  {uploadedColumns.map(c => (
+                    <option value={c} key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="category">Category</label>
+                <select 
+                  name="category"
+                  id='category'
+                  onChange={handleHeaderMapChange}
+                  value={headerMap.category}
+                  required
+                >
+                  <option value="">--</option>
+                  {uploadedColumns.map(c => (
+                    <option value={c} key={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="subCategory">Sub-Category</label>
+                <select 
+                  name="subCategory"
+                  id='subCategory'
+                  onChange={handleHeaderMapChange}
+                  value={headerMap.subCategory}
                   required
                 >
                   <option value="">--</option>
