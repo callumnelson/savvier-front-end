@@ -7,6 +7,10 @@ export interface MonthlyTrends {
 
 export interface MonthlyTrend {
   monthString: string;
-  income: number;
-  spending: number;
+  incomeNum: number;
+  spendingNum: number;
+  savingsNum: number;
+  savingsStr: string;
+  incomeStr: string;
+  spendingStr: string;
 }

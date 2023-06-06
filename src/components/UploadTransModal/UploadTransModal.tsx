@@ -68,6 +68,9 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       if (headerMap.subCategory) res.subCategory = t[headerMap.subCategory]
       return res
     })
+    // TODO break out of here if user has made a mistake
+      //Duplicate use of headers in mapping
+      //Uploading category or subCategory and the data is empty in those columns
     const batches: TransactionsFormData[] = []
     try {
       for (let i = 0; i < transactions.length; i+=500){
