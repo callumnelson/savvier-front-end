@@ -22,7 +22,7 @@ interface HeaderMap {
 
 const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
   const { show, setShowModal, selectedAccount, handleUploadTransactions } = props
-  const [file, setFile] = useState<string | undefined>(undefined)
+  const [file, setFile] = useState<string>('')
   const [headerMap, setHeaderMap] = useState<HeaderMap>({
     transactionDate: '',
     description: '',
@@ -65,7 +65,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       transactions
     }
     await handleUploadTransactions(transactionFormData, selectedAccount)
-    setFile(undefined)
+    setFile('')
     setHeaderMap({
       transactionDate: '',
       description: '',
@@ -78,7 +78,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
 
   const handleCloseModal = (): void => {
     setShowModal(false)
-    setFile(undefined)
+    setFile('')
   }
 
   return (
