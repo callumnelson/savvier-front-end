@@ -29,7 +29,7 @@
 .row > div {
   display: flex;
   flex-wrap: nowrap;
-  overflow: hidden;
+  overflow-x: scroll;
 }
 
 .row p {
