@@ -16,9 +16,14 @@ export const createTransactions = async (formData: TransactionsFormData, account
     },
     body: JSON.stringify(formData),
   })
-  const transactions = await res.json() as StateTransaction[]
-  transactions.forEach(t => 
-    t.formattedTransDate = new Date(t.transactionDate)
-  )
-  return transactions
+  try {
+    const transactions = await res.json() as StateTransaction[]
+    transactions.forEach(t => 
+      t.formattedTransDate = new Date(t.transactionDate)
+    )
+    return transactions
+  } catch (err) {
+    console.log(err)
+    return await res.json()
+  }
 }

@@ -40,11 +40,11 @@ const Transactions = (props: TransactionsProps) => {
   const { profile, setProfile } = props
   const [
     selectedAccount, setSelectedAccount
-  ] = useState<number>(profile.accounts[1].id)
+  ] = useState<number>(profile.accounts[0].id)
   const [displayTransactions, setDisplayTransactions
   ] = useState<StateTransaction[]>(
     profile.profileTransactions.filter(
-      t => t.accountId === profile.accounts[1].id
+      t => t.accountId === profile.accounts[0].id
     ).sort( (a, b) => b.formattedTransDate.getTime() - a.formattedTransDate.getTime())
   )
   const [search, setSearch] = useState<string>('')
@@ -81,7 +81,7 @@ const Transactions = (props: TransactionsProps) => {
       profileTransactions: newTransactionState
     })
     setDisplayTransactions(newTransactionState.filter(
-      t => t.accountId === profile.accounts[1].id
+      t => t.accountId === selectedAccount
     ).sort(
       (a, b) => b.formattedTransDate.getTime() - a.formattedTransDate.getTime()
     ))

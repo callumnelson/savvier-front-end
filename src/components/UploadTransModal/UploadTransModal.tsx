@@ -61,23 +61,39 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
         description: t[headerMap.description]
       } as UploadTransaction
     })
-    const transactionFormData: TransactionsFormData = {
-      transactions
+    const batches: TransactionsFormData[] = []
+    try {
+      for (let i = 0; i < transactions.length; i+=500){
+        batches.push({
+          transactions: transactions.slice(i, i + 500)
+        })
+      }
+      Promise.all(
+        batches.map( async (batch) => {
+          await handleUploadTransactions(batch, selectedAccount)
+        })
+      )
+      setFile('')
+      setHeaderMap({
+        transactionDate: '',
+        description: '',
+        amount: '',
+      })
+      setTemporaryData([])
+      setUploadedColumns([])
+      setShowModal(false)
+    } catch (err) {
+      console.log(err)
     }
-    await handleUploadTransactions(transactionFormData, selectedAccount)
-    setFile('')
+  }
+
+  const handleCloseModal = (): void => {
+    setShowModal(false)
     setHeaderMap({
       transactionDate: '',
       description: '',
       amount: '',
     })
-    setTemporaryData([])
-    setUploadedColumns([])
-    setShowModal(false)
-  }
-
-  const handleCloseModal = (): void => {
-    setShowModal(false)
     setFile('')
   }
 
