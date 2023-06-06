@@ -49,11 +49,14 @@
 }
 
 .header > div:nth-child(4){
-  width: 20%;
+  width: 17.5%;
 }
 
 .header > div:nth-child(5){
-  width: 20%;
+  width: 17.5%;
+}
+.header > div:nth-child(6){
+  width: 5%;
 }
 
 .rows {

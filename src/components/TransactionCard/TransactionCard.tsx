@@ -16,10 +16,11 @@ interface TransactionCardProps {
   transaction: StateTransaction;
   categories: {value: string; schemaName: string}[];
   handleUpdateTransaction: (transaction: StateTransaction) => Promise<void>
+  handleDeleteTransaction: (transaction: StateTransaction) => Promise<void>
 }
 
 const TransactionCard = (props: TransactionCardProps) => {
-  const { transaction, categories, handleUpdateTransaction } = props
+  const { transaction, categories, handleUpdateTransaction, handleDeleteTransaction } = props
   const [transState, setTransState] = useState<StateTransaction>(transaction)
   const [selectedCategory, setSelectedCategory] = useState<Category>(categories.filter(c => c.value === transaction.category)[0])
   const [subcategoryOptions, setSubCategoryOptions] = useState<string[]>(subCategories[categories.filter(c => c.value === transaction.category)[0].schemaName])
@@ -35,6 +36,11 @@ const TransactionCard = (props: TransactionCardProps) => {
   const handleChangeSubCategory = async (evt: ChangeEvent<HTMLSelectElement>): Promise<void> => {
     setTransState({...transState, [evt.currentTarget.name]: evt.currentTarget.value })
     await handleUpdateTransaction({...transState, [evt.currentTarget.name]: evt.currentTarget.value })
+  }
+
+  const handleClickDelete = async (): Promise<void> => {
+    await handleDeleteTransaction(transState)
+    //do stuff
   }
 
   return (
@@ -81,6 +87,12 @@ const TransactionCard = (props: TransactionCardProps) => {
             </option>
           ))}
         </select>
+      </div>
+      <div 
+        className={styles.delete}
+        onClick={handleClickDelete}
+      >
+        X
       </div>
     </div>
   )

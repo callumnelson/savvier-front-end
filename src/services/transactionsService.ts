@@ -19,3 +19,12 @@ export const updateTransaction = async (transaction: StateTransaction): Promise<
   updatedTransaction.formattedTransDate = new Date(updatedTransaction.transactionDate)
   return updatedTransaction
 }
+
+export const deleteTransaction = async (transaction: StateTransaction): Promise<void> => {
+  await fetch(`${BASE_URL}/${transaction.id}`, {
+    method: 'DELETE',
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+}

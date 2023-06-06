@@ -69,7 +69,7 @@ const Transactions = (props: TransactionsProps) => {
   const handleSearchChange = (evt: ChangeEvent<HTMLInputElement>): void => {
     const newSearch = evt.currentTarget.value
     setSearch(newSearch)
-    setDisplayTransactions(profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase())))
+    setDisplayTransactions(profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase()) && t.accountId === selectedAccount))
   }
 
   const handleUploadTransactions = async (transactionFormData: TransactionsFormData, accountId: number): Promise<void> => {
@@ -98,6 +98,23 @@ const Transactions = (props: TransactionsProps) => {
     setDisplayTransactions(displayTransactions.map(t => {
       return t.id === updatedTrans.id ? updatedTrans : t
     }))
+  }
+
+  const handleDeleteTransaction = async (deletedTrans: StateTransaction): Promise<void> => {
+    try {
+      await transactionsService.deleteTransaction(deletedTrans)
+      setProfile({
+        ...profile,
+        profileTransactions: profile.profileTransactions.filter(t => {
+          return t.id !== deletedTrans.id
+        })
+      })
+      setDisplayTransactions(displayTransactions.filter(t => {
+        return t.id !== deletedTrans.id
+      }))
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -138,6 +155,7 @@ const Transactions = (props: TransactionsProps) => {
                   <p>{h}</p>
                 </div>
               ))}
+              <div></div>
             </div>
             <div className={styles.rows}>
               {displayTransactions.map(t => (
@@ -146,6 +164,7 @@ const Transactions = (props: TransactionsProps) => {
                   transaction={t}
                   categories={categories}
                   handleUpdateTransaction={handleUpdateTransaction}
+                  handleDeleteTransaction={handleDeleteTransaction}
                 />
               ))}
             </div>
