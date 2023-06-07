@@ -26,16 +26,6 @@ interface TransactionsProps {
   setProfile: (profile: Profile) => void;
 }
 
-// interface SortObject {
-//   schemaName: string;
-//   order: number;
-// }
-
-// interface FilterObject {
-//   category: string;
-//   subCategory: string;
-// }
-
 const Transactions = (props: TransactionsProps) => {
   const { profile, setProfile } = props
   const [
@@ -48,8 +38,6 @@ const Transactions = (props: TransactionsProps) => {
     ).sort( (a, b) => b.formattedTransDate.getTime() - a.formattedTransDate.getTime())
   )
   const [search, setSearch] = useState<string>('')
-  // const [sort, setSort] = useState<SortObject>({schemaName: 'formattedTransDate', order: 1})
-  // const [filter, setFilter] = useState<FilterObject>({category: "", subCategory: ""})
   const [showModal, setShowModal] = useState<boolean>(false)
   
   const headers = [
