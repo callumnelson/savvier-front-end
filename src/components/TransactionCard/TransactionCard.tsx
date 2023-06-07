@@ -40,7 +40,6 @@ const TransactionCard = (props: TransactionCardProps) => {
 
   const handleClickDelete = async (): Promise<void> => {
     await handleDeleteTransaction(transState)
-    //do stuff
   }
 
   return (

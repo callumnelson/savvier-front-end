@@ -5,14 +5,15 @@ export const categories = [
   {value: 'Fun', schemaName: 'fun'}, 
   {value: 'Food/Necessities', schemaName: 'foodNecessities'},	
   {value: 'Housing', schemaName: 'housing'},
+  {value: 'Income', schemaName: 'income'},
+  {value: 'Insurance', schemaName: 'insurance'},
+  {value: 'Medical/Health', schemaName: 'medicalHealth'},
+  {value: 'Misc', schemaName: 'misc'},
+  {value: 'Personal', schemaName: 'personal'}, 
+  {value: 'Savings', schemaName: 'savings'},
   {value: 'Transportation', schemaName: 'transportation'},
   {value: 'Utilities', schemaName: 'utilities'},
-  {value: 'Medical/Health', schemaName: 'medicalHealth'},
-  {value: 'Savings', schemaName: 'savings'},
-  {value: 'Insurance', schemaName: 'insurance'},
-  {value: 'Personal', schemaName: 'personal'}, 
-  {value: 'Misc', schemaName: 'misc'},
-  {value: 'Income', schemaName: 'income'}
+  {value: 'Exclude', schemaName: 'exclude'}
 ]
 
 export const subCategories: SubCategory = {
@@ -90,5 +91,10 @@ export const subCategories: SubCategory = {
     'Dividend',
     'Wedding Gift'
   ],
-  uncoded: ['-']
+  uncoded: ['-'],
+  exclude: [
+    'Payment',
+    'Transfer',
+    'Other'
+  ]
 }

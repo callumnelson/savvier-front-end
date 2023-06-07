@@ -34,7 +34,11 @@
 .row > div {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow-x: hidden;
+}
+
+.row > div:hover {
+  overflow-x: overlay;
 }
 
 .row p {
