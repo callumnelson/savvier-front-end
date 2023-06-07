@@ -2,21 +2,21 @@
 import { useState } from 'react'
 
 // css
-import styles from './SubNav.module.css'
+import styles from './TransSubNav.module.css'
 
 // service
 
 // types
 import { Account } from '../../types/models'
 import { AccountFormData } from '../../types/forms'
-interface SubNavProps {
+interface TransSubNavProps {
   accounts: Account[];
   selectedAccount: number | undefined;
   handleAccountClick: (evt: React.MouseEvent<HTMLDivElement>) => void;
   handleAddAccount: (formData: AccountFormData) => Promise<void>; 
 }
 
-const SubNav = (props: SubNavProps) => {
+const TransSubNav = (props: TransSubNavProps) => {
   const { accounts, selectedAccount, handleAccountClick, handleAddAccount } = props
   const [accountForm, setAccountForm] = useState<AccountFormData>({
     name: '', 
@@ -90,4 +90,4 @@ const SubNav = (props: SubNavProps) => {
   )
 }
  
-export default SubNav
+export default TransSubNav

@@ -1,14 +1,20 @@
 
 .container section {
   width: 100%;
+  flex-grow: 1;
+  display: flex;
+  height: calc(100% - 83px);
+}
+
+.chartContainer {
+  width: 85%;
   height: 100%;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
 }
 
-.trendchart {
+.chart {
   width: 80%;
   height: 80%;
 }

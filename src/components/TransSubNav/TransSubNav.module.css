@@ -1,0 +1,82 @@
+.container {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid var(--linen);
+  position: relative;
+}
+
+.container div {
+  display: flex;
+  padding: 15px 30px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60px;
+  background-color: var(--backgroundColor);
+  position: relative;
+  z-index: 2;
+}
+
+.container div:hover {
+  cursor: pointer;
+}
+
+.container div:first-child:hover {
+  cursor: default;
+}
+
+.selected {
+  background-color: var(--blue) !important;
+  color: var(--backgroundColor);
+}
+
+.unselected:hover {
+  background-color: #7f7f7f;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 15px;
+  gap: 15px;
+  border: 2px solid var(--blue);
+}
+
+.container form input, .container form select {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.container form button {
+  padding: 5px 10px;
+  width: 50%;
+}
+
+.showForm {
+  animation: showForm 1.5s ease forwards;
+}
+
+.hideForm { 
+  animation: hideForm 1.5s ease forwards;
+}
+
+@keyframes showForm {
+  from {
+    transform: translateY(-100%); 
+  }
+  to {
+    transform: translateY(0); 
+  }
+}
+
+@keyframes hideForm {
+  from {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}

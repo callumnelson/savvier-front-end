@@ -16,7 +16,7 @@ import * as transactionsService from '../../services/transactionsService'
 
 // components
 import PageHeader from '../../components/PageHeader/PageHeader';
-import SubNav from '../../components/SubNav/SubNav';
+import SubNav from '../../components/TransSubNav/TransSubNav';
 import UploadTransModal from '../../components/UploadTransModal/UploadTransModal'
 import { AccountFormData, TransactionsFormData } from '../../types/forms';
 import TransactionCard from '../../components/TransactionCard/TransactionCard';

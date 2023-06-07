@@ -1,5 +1,11 @@
 /* ---------==== custom data ====--------- */
 
+export interface Chart {
+  name: string;
+  type: string;
+  id: number;
+}
+
 export interface MonthlyTrends {
   months: string[];
   data: MonthlyTrend[];
