@@ -39,6 +39,7 @@ const Transactions = (props: TransactionsProps) => {
   )
   const [search, setSearch] = useState<string>('')
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [deleteAccount, setDeleteAccount] = useState<boolean>(false)
   
   const headers = [
     'Date',
@@ -52,6 +53,7 @@ const Transactions = (props: TransactionsProps) => {
     const newAccountId = parseInt(evt.currentTarget.id)
     setSelectedAccount(newAccountId)
     setDisplayTransactions(profile.profileTransactions.filter(t => t.accountId === newAccountId))
+    setSearch('')
   }
 
   const handleSearchChange = (evt: ChangeEvent<HTMLInputElement>): void => {
@@ -121,6 +123,20 @@ const Transactions = (props: TransactionsProps) => {
     })
   }
 
+  const handleDeleteAccount = async (): Promise<void> => {
+    await accountsService.deleteAccount(selectedAccount)
+    const remainingAccounts = profile.accounts.filter(a => a.id !== selectedAccount)
+    const remainingTransactions = profile.profileTransactions.filter(t => t.accountId !== selectedAccount)
+    setProfile({
+      ...profile,
+      accounts: remainingAccounts,
+      profileTransactions: remainingTransactions
+    })
+    setSelectedAccount(remainingAccounts[0].id)
+    setDisplayTransactions(remainingTransactions.filter(t => t.accountId === remainingAccounts[0].id))
+    setDeleteAccount(false)
+  }
+
   return (
     <main className={styles.container}>
       <PageHeader pageName='Transactions'></PageHeader>
@@ -137,6 +153,32 @@ const Transactions = (props: TransactionsProps) => {
             Viewing {displayTransactions.length} transactions
           </h4>
           <div>
+            {
+              !deleteAccount ? 
+              <button
+                onClick={() => setDeleteAccount(true)}
+              >
+                Delete Account
+              </button>
+              :
+              <>
+                <h4>
+                  Are you sure?
+                </h4>
+                <button 
+                  className={styles.cancelDeleteAccount}
+                  onClick={() => setDeleteAccount(false)}
+                >
+                  No
+                </button>
+                <button
+                  className={styles.confirmDeleteAccount}
+                  onClick={handleDeleteAccount}
+                >
+                  Yes
+                </button>
+              </>
+            }
             <button
               onClick={(): void => setShowModal(!showModal)}
             >

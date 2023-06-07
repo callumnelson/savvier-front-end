@@ -21,6 +21,19 @@
   justify-content: space-between;
 }
 
+.tableContainer nav div {
+  display: flex;
+  align-items: center;
+}
+
+.confirmDeleteAccount {
+  border-color: var(--leather);
+}
+
+.confirmDeleteAccount:hover {
+  border-color: #ff996d;
+}
+
 .tableContainer nav div * {
   margin-left: 15px;
 }
@@ -37,7 +50,6 @@
   border-bottom: 0.5px solid var(--linen);
 }
 
-/* Generic cell */
 .header > div {
   padding: 10px 5px;
   display: flex;

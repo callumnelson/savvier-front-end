@@ -39,3 +39,12 @@ export const createAccount = async (formData: AccountFormData): Promise<Account>
   })
   return await res.json() as Account
 }
+
+export const deleteAccount = async (accountId: number): Promise<void> => {
+  await fetch(`${BASE_URL}/${accountId}`, {
+    method: 'DELETE',
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+}

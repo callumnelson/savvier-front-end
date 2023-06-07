@@ -248,11 +248,18 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
                   ))}
                 </select>
               </div>
-              <button
-                onClick={handleUpload}
-              >
-                Upload
-              </button>
+              <div>
+                <button
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpload}
+                >
+                  Upload
+                </button>
+              </div>
             </div>
               
           }
