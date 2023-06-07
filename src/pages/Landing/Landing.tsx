@@ -22,9 +22,12 @@ const Landing = (props: LandingProps): JSX.Element => {
     <main className={styles.container}>
       <h1>LOGO GOES HERE</h1>
       <div>
-        <Link to={'/auth/signup'}>Signup</Link>
-        <span> or </span>
-        <Link to={'/auth/login'}>Login</Link>
+        <button onClick={() => navigate('/auth/signup')}>
+          Signup
+        </button>
+        <button onClick={() => navigate('/auth/login')}>
+          Login
+        </button>
       </div>
     </main>
   )
