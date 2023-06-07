@@ -1,5 +1,5 @@
 // npm modules
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 // assets
 import defaultProfile from '../../assets/icons/profile.png'
@@ -18,27 +18,31 @@ interface NavBarProps {
 
 const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, profile, handleLogout } = props
+  const { pathname } = useLocation()
+  const navPath = pathname.split('/').slice(-1)[0].replaceAll('-', ' ')
   
   return (
     <nav className={styles.container}>
       <div className={styles.info}>
         <img src={profile.photo ?? defaultProfile } alt="" />
-        <h1>{user.name}</h1>
+        <h1>{user.name.split(' ')[0]}</h1>
       </div>
-      <ul className={styles.destinations}>
-        <li>
+      <div className={styles.destinations}>
+        <p className={navPath === 'dashboard' ? styles.selected: styles.unselected}>
           <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
-        <li>
+        </p>
+        <p className={navPath === 'transactions' ? styles.selected: styles.unselected}>
           <NavLink to="/transactions">Transactions</NavLink>
-        </li>
-        <li>
-          <NavLink to="" onClick={handleLogout}>LOG OUT</NavLink>
-        </li>
-        <li>
+        </p>
+      </div>
+      <div className={styles.auth}>
+        <p className={navPath === 'change password' ? styles.selected: styles.unselected}>
           <NavLink to="/auth/change-password">Change Password</NavLink>
-        </li>
-      </ul>
+        </p>
+        <p className={navPath === 'log out' ? styles.selected: styles.unselected}>
+          <NavLink to="" onClick={handleLogout}>Log Out</NavLink>
+        </p>
+      </div>
     </nav>
   )
 }

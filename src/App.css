@@ -17,6 +17,7 @@ body {
   --linen: #dfdbd8;
   --white: rgba(255, 255, 255, 0.87);
   --backgroundColor: #242424;
+  --secondaryBackground: #454545;
   color: var(--white);
   background-color: var(--backgroundColor);
   font-synthesis: none;

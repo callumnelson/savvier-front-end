@@ -13,7 +13,7 @@ interface OverallTrendChartProps {
 
 const OverallTrendChart = (props: OverallTrendChartProps) => {
   const { profile } = props
-
+  
   const data = dataService.computeMonthlyTrends(profile.profileTransactions)
 
   return (
