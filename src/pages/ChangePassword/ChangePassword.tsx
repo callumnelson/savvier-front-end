@@ -1,6 +1,6 @@
 // npm modules
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // services
 import * as authService from '../../services/authService'
