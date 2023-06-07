@@ -129,6 +129,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
         <section>
           <div className={styles.inputContainer}>
             <input
+              title=''
               type="file"
               name="file"
               accept=".csv"
@@ -140,6 +141,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
           {
             file &&
             <div className={styles.columnMapContainer}>
+              <p>Select the corresponding columns in your data</p>
               <div>
                 <h4>Required Column</h4>
                 <h4>Column from Data</h4>
@@ -190,6 +192,10 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
                 </select>
               </div>
               <div>
+                <h4>Optional Column</h4>
+                <h4>Column from Data</h4>
+              </div>
+              <div>
                 <label htmlFor="category">Category</label>
                 <select 
                   name="category"
@@ -219,11 +225,11 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
                   ))}
                 </select>
               </div>
-            <button
-              onClick={handleUpload}
-            >
-              Upload
-            </button>
+              <button
+                onClick={handleUpload}
+              >
+                Upload
+              </button>
             </div>
               
           }

@@ -16,13 +16,14 @@
 }
 
 .modal {
-  width: 50%;
-  height: 50%;
   display: flex;
-  color: black;
+  border-radius: 5px;
   align-items: center;
   flex-direction: column;
+  width: max(50%, 600px);
+  height: max(50%, 500px);
   justify-content: center;
+  color: var(--backgroundColor);
   background-color: var(--linen);
 }
 
@@ -45,12 +46,61 @@
 }
 
 .columnMapContainer {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputContainer {
+  width: 60%;
+  text-align: center;
 }
 
 .columnMapContainer div {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
+
+.container input::file-selector-button, .container button, .container select {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--backgroundColor);
+  border: 2px solid var(--forestGreen);
+}
+
+.container select {
+  padding: 5px 10px;
+}
+
+.container input::file-selector-button:hover, 
+.container button:hover, 
+.container select:hover {
+  cursor: pointer;
+  border: 2px solid #57d9b8;
+  transition: all 0.25s ease-in-out;
+}
+
+.container input[type="file"] {
+  border: none;
+  color: var(--backgroundColor);
+}
+
+.container input[type="file"]:hover {
+  cursor: pointer;
+}
+
+.container input[type="file"]::after {
+  content: '';
+}
+
+.columnMapContainer button {
+  width: 150px;
+}
+
