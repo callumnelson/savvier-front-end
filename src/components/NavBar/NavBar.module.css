@@ -1,5 +1,5 @@
 .container {
-  width: 15%;
+  width: max(15%, 210px);
   height: 100%;
   display: flex;
   align-items: center;
