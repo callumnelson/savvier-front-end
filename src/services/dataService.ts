@@ -11,7 +11,10 @@ export const computeMonthlyTrends = (transactions: StateTransaction[]): MonthlyT
   }
 
   transactions.reduce( (res, t) => {
-    const monthYear = `${t.formattedTransDate.getMonth()+1}, ${t.formattedTransDate.getFullYear()}`
+    const monthYear = `
+      ${t.formattedTransDate.getMonth()+1 < 10 ? '0': ''}${t.formattedTransDate.getMonth()+1} / 
+      ${t.formattedTransDate.getFullYear().toString().slice(2)}
+    `
     if (res.months.includes(monthYear)) {
       //The last item in the array is the month we're working on right now
       const monthlyTrend = res.data[res.data.findIndex(t => t.monthString === monthYear)]

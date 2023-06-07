@@ -1,11 +1,12 @@
 // npm modules
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts';
 
 // types
 import { Profile } from '../../types/models';
 
 // services
 import * as dataService from '../../services/dataService'
+import currency from 'currency.js';
 
 interface OverallTrendChartProps {
   profile: Profile
@@ -16,9 +17,25 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
   
   const data = dataService.computeMonthlyTrends(profile.profileTransactions)
 
+  const gradientOffset = () => {
+    const dataMax = Math.max(...data.data.map((i) => i.savingsNum));
+    const dataMin = Math.min(...data.data.map((i) => i.savingsNum));
+  
+    if (dataMax <= 0) {
+      return 0;
+    }
+    if (dataMin >= 0) {
+      return 1;
+    }
+  
+    return dataMax / (dataMax - dataMin);
+  };
+  
+  const off = gradientOffset();
+
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart
+      <ComposedChart
         width={500}
         height={300}
         data={data.data}
@@ -30,14 +47,27 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="monthString" />
-        <YAxis />
-        <Tooltip />
+        <XAxis 
+          dataKey="monthString" 
+        />
+        <YAxis 
+          tickFormatter={(x) => currency(x as number, {precision: 0}).format()}
+        />
+        <Tooltip 
+          formatter={(x) => currency(x as number, {precision: 0}).format()}
+          contentStyle={{ color: 'black'}}
+        />
         <Legend />
-        <Line type="monotone" dataKey="incomeNum" stroke="#828aca" name='Income'/>
-        <Line type="monotone" dataKey="savingsNum" stroke="#82ca9d" activeDot={{ r: 8 }} name='Savings'/>
-        <Line type="monotone" dataKey="spendingNum" stroke="#c73434" name='Spending'/>
-      </LineChart>
+        <defs>
+          <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset={off} stopColor="green" stopOpacity={1} />
+            <stop offset={off} stopColor="red" stopOpacity={1} />
+          </linearGradient>
+        </defs>
+        <Bar type="monotone" dataKey="incomeNum" stroke="#828aca" fill="#828aca" name='Income'/>
+        <Bar type="monotone" dataKey="spendingNum" fill= "#307fb8" stroke="#307fb8" name='Spending'/>
+        <Area type="monotone" dataKey="savingsNum" fill="url(#splitColor)" activeDot={{ r: 8 }} name='Savings' stroke="green"/>
+      </ComposedChart>
     </ResponsiveContainer>
   )
 }
