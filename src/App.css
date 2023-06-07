@@ -47,3 +47,43 @@ main {
   align-items: center;
   flex-direction: column;
 }
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linen);
+  border-radius: 10px;
+  background-color: transparent;
+  border: 2px solid var(--forestGreen);
+}
+
+button:hover {
+  cursor: pointer;
+  border: 2px solid #57d9b8;
+  transition: all 0.25s ease-in-out;
+}
+
+input, select {
+  margin: 0;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--linen);
+  background-color: transparent;
+  border: 2px solid var(--forestGreen);
+}
+
+input {
+  padding: 10px
+}
+
+input:focus, select:hover, select:focus {
+  outline: none;
+  border: 2px solid #57d9b8;
+  transition: border 0.25s ease-in-out;
+}
+
+select:hover {
+  cursor: pointer;
+}

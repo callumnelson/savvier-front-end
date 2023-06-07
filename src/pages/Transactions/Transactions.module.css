@@ -1,4 +1,3 @@
-
 .container {
   overflow: hidden;
 }
@@ -19,6 +18,11 @@
 .tableContainer nav {
   display: flex;
   justify-content: end;
+  padding-bottom: 15px;
+}
+
+.tableContainer nav * {
+  margin-left: 15px;
 }
 
 .table {
