@@ -58,11 +58,11 @@ const Transactions = (props: TransactionsProps) => {
     const newSearch = evt.currentTarget.value
     setSearch(newSearch)
     setDisplayTransactions(
-      profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase()) 
+      profile.profileTransactions.filter(t => (t.description.toLocaleLowerCase().includes(newSearch.toLowerCase()) 
       ||
       t.category.toLowerCase().includes(newSearch.toLowerCase())
       ||
-      t.subCategory.toLowerCase().includes(newSearch.toLowerCase())
+      t.subCategory.toLowerCase().includes(newSearch.toLowerCase()))
       && 
       t.accountId === selectedAccount)
     )
@@ -133,15 +133,14 @@ const Transactions = (props: TransactionsProps) => {
         />
         <div className={styles.tableContainer}>
         <nav>
+          <h4>
+            Viewing {displayTransactions.length} transactions
+          </h4>
           <div>
             <button
               onClick={(): void => setShowModal(!showModal)}
             >
               Add Transactions
-            </button>
-            <button
-            >
-              Show All
             </button>
             <input
               className={styles.search}

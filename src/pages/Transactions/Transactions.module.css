@@ -17,10 +17,11 @@
 
 .tableContainer nav {
   display: flex;
-  justify-content: end;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.tableContainer nav * {
+.tableContainer nav div * {
   margin-left: 15px;
 }
 
