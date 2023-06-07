@@ -2,8 +2,8 @@
 import * as tokenService from './tokenService'
 
 // types 
-import { TransactionsFormData } from "../types/forms"
-import { StateTransaction } from "../types/models"
+import { AccountFormData, TransactionsFormData } from "../types/forms"
+import { Account, StateTransaction } from "../types/models"
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/accounts`
 
@@ -26,4 +26,16 @@ export const createTransactions = async (formData: TransactionsFormData, account
     console.log(err)
     return await res.json()
   }
+}
+
+export const createAccount = async (formData: AccountFormData): Promise<Account> => {
+  const res = await fetch(`${BASE_URL}/`, {
+    method: 'POST',
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData),
+  })
+  return await res.json() as Account
 }

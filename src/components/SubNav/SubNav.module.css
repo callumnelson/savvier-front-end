@@ -11,6 +11,8 @@
   flex-direction: column;
   justify-content: center;
   min-height: 60px;
+  background-color: var(--backgroundColor);
+  z-index: 2;
 }
 
 .container div:hover {
@@ -22,6 +24,57 @@
 }
 
 .selected {
-  background-color: var(--blue);
+  background-color: var(--blue) !important;
   color: var(--backgroundColor);
+}
+
+.unselected:hover {
+  background-color: #7f7f7f;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 15px;
+  gap: 15px;
+  border: 2px solid var(--blue);
+}
+
+.container form input, .container form select {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.container form button {
+  padding: 5px 10px;
+  width: 50%;
+}
+
+.showForm {
+  animation: showForm 1.5s ease forwards;
+}
+
+.hideForm { 
+  animation: hideForm 1.5s ease forwards;
+}
+
+@keyframes showForm {
+  from {
+    transform: translateY(-100%); 
+  }
+  to {
+    transform: translateY(0); 
+  }
+}
+
+@keyframes hideForm {
+  from {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }

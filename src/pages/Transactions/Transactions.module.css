@@ -11,14 +11,13 @@
 
 .tableContainer {
   width: 85%;
-  padding: 30px;
+  padding: 15px 30px;
   height: 100%;
 }
 
 .tableContainer nav {
   display: flex;
   justify-content: end;
-  padding-bottom: 15px;
 }
 
 .tableContainer nav * {
@@ -68,6 +67,6 @@
 }
 
 .rows {
-  height: calc(100% - 40px);
+  height: calc(100% - 73px);
   overflow-y: overlay;
 }

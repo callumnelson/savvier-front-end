@@ -21,6 +21,11 @@ export interface SubCategory {
   [key: string]: string[];
 }
 
+export interface AccountFormData {
+  name: string;
+  type: 'Checking' | 'Savings' | 'Credit Card' | 'Other'
+}
+
 
 /* ---------===== auth forms =====--------- */
 

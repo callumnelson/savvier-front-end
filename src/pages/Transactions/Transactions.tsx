@@ -18,7 +18,7 @@ import * as transactionsService from '../../services/transactionsService'
 import PageHeader from '../../components/PageHeader/PageHeader';
 import SubNav from '../../components/SubNav/SubNav';
 import UploadTransModal from '../../components/UploadTransModal/UploadTransModal'
-import { TransactionsFormData } from '../../types/forms';
+import { AccountFormData, TransactionsFormData } from '../../types/forms';
 import TransactionCard from '../../components/TransactionCard/TransactionCard';
 
 interface TransactionsProps {
@@ -113,6 +113,14 @@ const Transactions = (props: TransactionsProps) => {
     }
   }
 
+  const handleAddAccount = async (formData: AccountFormData): Promise<void> => {
+    const newAccount = await accountsService.createAccount(formData)
+    setProfile({
+      ...profile,
+      accounts: [...profile.accounts, newAccount]
+    })
+  }
+
   return (
     <main className={styles.container}>
       <PageHeader pageName='Transactions'></PageHeader>
@@ -121,6 +129,7 @@ const Transactions = (props: TransactionsProps) => {
           accounts={profile.accounts}
           selectedAccount={selectedAccount}
           handleAccountClick={handleAccountClick}
+          handleAddAccount={handleAddAccount}
         />
         <div className={styles.tableContainer}>
         <nav>
