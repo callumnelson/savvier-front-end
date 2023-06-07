@@ -94,6 +94,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       setTemporaryData([])
       setUploadedColumns([])
       setShowModal(false)
+      setMessage('Select the corresponding columns in your data')
     } catch (err) {
       console.log(err)
     }

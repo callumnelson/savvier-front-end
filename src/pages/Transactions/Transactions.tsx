@@ -69,7 +69,15 @@ const Transactions = (props: TransactionsProps) => {
   const handleSearchChange = (evt: ChangeEvent<HTMLInputElement>): void => {
     const newSearch = evt.currentTarget.value
     setSearch(newSearch)
-    setDisplayTransactions(profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase()) && t.accountId === selectedAccount))
+    setDisplayTransactions(
+      profile.profileTransactions.filter(t => t.description.toLocaleLowerCase().includes(newSearch.toLowerCase()) 
+      ||
+      t.category.toLowerCase().includes(newSearch.toLowerCase())
+      ||
+      t.subCategory.toLowerCase().includes(newSearch.toLowerCase())
+      && 
+      t.accountId === selectedAccount)
+    )
   }
 
   const handleUploadTransactions = async (transactionFormData: TransactionsFormData, accountId: number): Promise<void> => {
