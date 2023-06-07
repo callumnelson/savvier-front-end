@@ -73,7 +73,7 @@ const LoginPage = (props: AuthPageProps): JSX.Element => {
           />
         </label>
         <div>
-          <button onClick={() => navigate('/')}>
+          <button type="button" onClick={() => navigate('/')}>
             Cancel
           </button>
           <button type='submit' className={styles.button} disabled={isFormInvalid()}>
