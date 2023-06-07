@@ -34,10 +34,10 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
   })
   const [uploadedColumns, setUploadedColumns] = useState<string[]>([])
   const [temporaryData, setTemporaryData] = useState<Record<string, string>[]>([])
+  const [message, setMessage] = useState<string>('Select the corresponding columns in your data')
   
   const handleFileChange = (evt: ChangeEvent<HTMLInputElement>) => {
     if (!evt.currentTarget.files) return
-
     setFile(evt.currentTarget.value)
     Papa.parse(evt.currentTarget.files[0], {
       header: true,
@@ -68,9 +68,9 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
       if (headerMap.subCategory) res.subCategory = t[headerMap.subCategory]
       return res
     })
-    // TODO break out of here if user has made a mistake
-      //Duplicate use of headers in mapping
-      //Uploading category or subCategory and the data is empty in those columns
+    // Check for valid header selections
+    if (!checkValidHeaderMap()) return
+
     const batches: TransactionsFormData[] = []
     try {
       for (let i = 0; i < transactions.length; i+=500){
@@ -97,6 +97,28 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const checkValidHeaderMap = ():boolean => {
+    // Required columns not filled in
+    if (!headerMap.amount || !headerMap.transactionDate || !headerMap.description) {
+      setMessage('Please fill in all the required columns')
+      return false
+    // All columns mapped but not uniquely
+    } else if (
+      headerMap.category && headerMap.subCategory &&
+      new Set(Object.values(headerMap)).size !== Object.values(headerMap).length
+    ){
+      setMessage('Please ensure that you have selected unique columns')
+      return false
+    } else if (
+      (headerMap.category && !headerMap.subCategory) ||
+      (!headerMap.category && headerMap.subCategory)
+    ){
+      setMessage('Please map none or all of category and sub category')
+      return false
+    }
+    return true
   }
 
   const handleCloseModal = (): void => {
@@ -141,10 +163,10 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
           {
             file &&
             <div className={styles.columnMapContainer}>
-              <p>Select the corresponding columns in your data</p>
+              <p>{message}</p>
               <div>
                 <h4>Required Column</h4>
-                <h4>Column from Data</h4>
+                <h4>Column from Upload</h4>
               </div>
               <div>
                 <label htmlFor="transactionDate">Transaction Date</label>
@@ -193,7 +215,7 @@ const UploadTransModal = (props: UploadTransModalProps): JSX.Element => {
               </div>
               <div>
                 <h4>Optional Column</h4>
-                <h4>Column from Data</h4>
+                <h4>Column from Upload</h4>
               </div>
               <div>
                 <label htmlFor="category">Category</label>
