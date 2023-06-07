@@ -1,12 +1,32 @@
-input {
+.container input {
   margin-left: 16px;
-  padding: 4px 8px;
-  font-size: 16px;
   width: 300px;
 }
 
-input[type="file"] {
+.container input::file-selector-button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--linen);
+  border: 2px solid var(--forestGreen);
+}
+
+.container input::file-selector-button:hover {
+  cursor: pointer;
+  border: 2px solid #57d9b8;
+  transition: all 0.25s ease-in-out;
+}
+
+
+.container input[type="file"] {
   padding: 0;
+  border: none;
+}
+
+.container input[type="file"]::after {
+  content: '';
 }
 
 .container {
@@ -14,6 +34,7 @@ input[type="file"] {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .message {
@@ -34,7 +55,7 @@ input[type="file"] {
 .label {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
