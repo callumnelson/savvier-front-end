@@ -3,6 +3,8 @@ import styles from './Dashboard.module.css'
 
 // components
 import OverallTrendChart from '../../components/OverallTrendChart/OverallTrendChart';
+import CategoryChart from '../../components/CategoryChart/CategoryChart';
+import SubCategoryChart from '../../components/SubCategoryChart/SubCategoryChart';
 
 // types
 import { Profile } from '../../types/models';
@@ -13,7 +15,6 @@ import { Chart } from '../../types/data';
 
 // data
 import { charts } from '../../data/charts';
-import CategoryChart from '../../components/CategoryChart/CategoryChart';
 
 
 interface DashboardProps {
@@ -52,6 +53,12 @@ const Dashboard = (props: DashboardProps) => {
             {
               selectedChart.id === 2 &&
               <CategoryChart
+                profile={profile}
+              />
+            }
+            {
+              selectedChart.id === 3 &&
+              <SubCategoryChart
                 profile={profile}
               />
             }

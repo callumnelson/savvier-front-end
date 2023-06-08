@@ -1,25 +1,30 @@
 // npm modules
 import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar, BarChart } from 'recharts';
 import randomColor from 'randomcolor'
+import { useState } from 'react';
 
 // types
 import { Profile } from '../../types/models';
+import { SubCategoryContainer, SubCategoryTrends } from '../../types/data';
 
 // services
 import * as dataService from '../../services/dataService'
 import currency from 'currency.js';
 
-interface CategoryChartProps {
+interface SubCategoryChartProps {
   profile: Profile
 }
 
-const CategoryChart = (props: CategoryChartProps) => {
+const SubCategoryChart = (props: SubCategoryChartProps) => {
   const { profile } = props
-  
-  const data = dataService.computeCategoryTrends(profile.profileTransactions)
+  const [data, setData] = useState<SubCategoryContainer>(dataService.computeSubCategoryTrends(profile.profileTransactions))
+  const [selectedCategory, setSelectedCategory] = useState<string>(Object.keys(data.data)[0])
+  const [currentSubCatData, setCurrentSubCatData] = useState<SubCategoryTrends>(data.data[selectedCategory])
+
+  console.log(selectedCategory)
 
   const colors = randomColor({
-    count: data.categories.length, 
+    count: currentSubCatData.subCategories.length, 
     hue: '#00FFFF', 
     luminosity: 'light'
   })
@@ -29,7 +34,7 @@ const CategoryChart = (props: CategoryChartProps) => {
       <BarChart
         width={500}
         height={300}
-        data={data.data}
+        data={currentSubCatData.data}
         stackOffset="sign"
         margin={{
           top: 5,
@@ -52,11 +57,11 @@ const CategoryChart = (props: CategoryChartProps) => {
           
         />
         <Legend />
-        {data.categories.map( (cat, idx) => (
+        {currentSubCatData.subCategories.map( (cat, idx) => (
           <Bar 
             key={cat}
             type="monotone" 
-            dataKey={`data.${cat}`}
+            dataKey={`data[${cat}]`}
             name={cat}
             fill={colors[idx]}
             stackId={'b'}
@@ -67,4 +72,4 @@ const CategoryChart = (props: CategoryChartProps) => {
   )
 }
 
-export default CategoryChart
+export default SubCategoryChart

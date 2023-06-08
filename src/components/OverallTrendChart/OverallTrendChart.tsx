@@ -55,7 +55,8 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
         />
         <Tooltip 
           formatter={(x) => currency(x as number, {precision: 0}).format()}
-          contentStyle={{ color: 'black'}}
+          contentStyle={{ color: '#dfdbd8', backgroundColor: '#303030', fontWeight: 600}}
+          cursor={{fill: '#303030'}}
         />
         <Legend />
         <defs>

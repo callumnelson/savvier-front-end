@@ -8,7 +8,12 @@ export const charts: Chart[] = [
   },
   {
     id: 2,
-    name: 'By Category',
+    name: 'Category',
+    type: 'Monthly Trends'
+  },
+  {
+    id: 3,
+    name: 'Sub-Category',
     type: 'Monthly Trends'
   }
 ]

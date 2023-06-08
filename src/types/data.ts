@@ -20,8 +20,7 @@ export interface OverallTrend {
   }
 }
 
-export interface CategoryTrends {
-  months: string[];
+export interface CategoryTrends extends Omit<OverallTrends, 'data'> {
   data: CategoryTrend[];
   categories: string[];
 }
@@ -31,4 +30,23 @@ export interface CategoryTrend {
   data: {
     [key: string]: number;
   }
+}
+
+export interface SubCategoryTrend {
+  monthString: string;
+  data: {
+    [key: string]: number;
+  }
+}
+
+export interface SubCategoryContainer {
+  data: {
+    [key: string]: SubCategoryTrends;
+  }
+}
+
+export interface SubCategoryTrends {
+  months: string[];
+  subCategories: string[];
+  data: SubCategoryTrend[];
 }
