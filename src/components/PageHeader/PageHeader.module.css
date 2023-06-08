@@ -8,6 +8,7 @@
 .divider {
   height: 0.5px;
   background-color: var(--linen);
+  z-index: 3;
   animation: divider 1s ease forwards;
 }
 

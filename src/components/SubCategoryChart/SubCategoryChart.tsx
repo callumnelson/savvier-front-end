@@ -38,7 +38,7 @@ const SubCategoryChart = (props: SubCategoryChartProps) => {
 
   return (
     <div className={styles.container}>
-      <h3>Monthly spending by Sub-Category</h3>
+      <h3>Monthly Spending by Sub-Category</h3>
       <select 
         name="category" 
         onChange={handleSelectCategory}

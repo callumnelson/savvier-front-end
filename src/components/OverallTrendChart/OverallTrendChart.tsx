@@ -21,24 +21,24 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
   const data = dataService.computeOverallTrends(profile.profileTransactions)
 
   const gradientOffset = () => {
-    const dataMax = Math.max(...data.data.map((i) => i.data.savingsNum));
-    const dataMin = Math.min(...data.data.map((i) => i.data.savingsNum));
+    const dataMax = Math.max(...data.data.map((i) => i.data.savingsNum))
+    const dataMin = Math.min(...data.data.map((i) => i.data.savingsNum))
   
     if (dataMax <= 0) {
-      return 0;
+      return 0
     }
     if (dataMin >= 0) {
-      return 1;
+      return 1
     }
   
-    return dataMax / (dataMax - dataMin);
-  };
+    return dataMax / (dataMax - dataMin)
+  }
   
-  const off = gradientOffset();
+  const off = gradientOffset()
 
   return (
     <div className={styles.container}>
-    <h3>Monthly spending by Sub-Category</h3>
+    <h3>Monthly Income, Spending, and Savings</h3>
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
           width={500}
@@ -56,6 +56,10 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
             dataKey="monthString" 
           />
           <YAxis 
+            domain={
+              [(dataMin:number) => (Math.floor(dataMin / 2500)*2500), 
+              (dataMax:number) => (Math.ceil(dataMax / 2500)*2500)]
+            }
             tickFormatter={(x) => currency(x as number, {precision: 0}).format()}
           />
           <Tooltip 
