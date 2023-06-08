@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
 
+// assets
+import logo from '../../assets/images/logo.svg'
+
 // types
 import { User } from '../../types/models';
 
@@ -19,7 +22,8 @@ const Landing = (props: LandingProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>LOGO GOES HERE</h1>
+      <img src={logo} alt="Savvier logo" />
+      <h1>Get savvier. Become a saver.</h1>
       <div>
         <button onClick={() => navigate('/auth/signup')}>
           Signup

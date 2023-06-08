@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  overflow: hidden;
 }
 
 .container button:first-child {
@@ -13,3 +14,10 @@
 .container button:last-child {
   margin-left: 15px;
 }
+
+.container img {
+  width: max(60%, 600px);
+  margin-bottom: -200px;
+  margin-top: -15%;
+}
+
