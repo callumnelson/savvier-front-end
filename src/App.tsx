@@ -67,8 +67,8 @@ function App(): JSX.Element {
     }
     <Routes>
       <Route path="/" element={
-          <Landing user={user} />
-        } 
+          <Landing user={user}/>
+        }
       />
       <Route path="/dashboard" 
         element={

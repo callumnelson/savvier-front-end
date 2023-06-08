@@ -9,6 +9,7 @@ import logo from '../../assets/images/logo.svg'
 
 // types
 import { User } from '../../types/models';
+import { useEffect } from 'react';
 
 interface LandingProps {
   user: User | null;
@@ -18,7 +19,9 @@ const Landing = (props: LandingProps): JSX.Element => {
   const { user } = props
   const navigate = useNavigate()
 
-  if (user) navigate('/dashboard')
+  useEffect(() => {
+    if (user) navigate('/dashboard')
+  }, [user]);
 
   return (
     <main className={styles.container}>
