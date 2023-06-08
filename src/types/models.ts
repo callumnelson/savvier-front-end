@@ -26,6 +26,22 @@ export interface Account {
   updatedAt: string;
 }
 
+export interface Category {
+  id: number;
+  name: string;
+  subCategories: SubCategory[];
+  profileId: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SubCategory {
+  id: number;
+  name: string;
+  categoryId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 /* ---------===== auth models =====--------- */
 
@@ -38,6 +54,7 @@ export interface Profile {
   updatedAt: string;
   accounts: Account[];
   profileTransactions: StateTransaction[];
+  categories: Category[];
 }
 
 export interface User {
