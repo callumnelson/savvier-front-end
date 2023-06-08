@@ -84,6 +84,7 @@ export const computeCategoryTrends = (transactions: StateTransaction[]): Categor
 
 export const computeSubCategoryTrends = (transactions: StateTransaction[]): SubCategoryContainer => {
   const res: SubCategoryContainer = {
+    months: [],
     data: {},
   }
 
@@ -92,9 +93,10 @@ export const computeSubCategoryTrends = (transactions: StateTransaction[]): SubC
   transactions.reduce( (res, t) => {
     if (!['Income', 'Exclude', '-'].includes(t.category)){
       const monthYear = `${t.formattedTransDate.getMonth()+1 < 10 ? '0': ''}${t.formattedTransDate.getMonth()+1} / ${t.formattedTransDate.getFullYear().toString().slice(2)}`
+      if (!res.months.includes(monthYear)) res.months.push(monthYear)
       // If there's an array for category
       if (res.data[t.category]){
-        const subCategoryTrends = res.data[t.category]
+        const subCategoryTrends: SubCategoryTrends = res.data[t.category]
         // If the subCategory array has the given month already
         if (subCategoryTrends.months.includes(monthYear)){
           const monthlyTrend = subCategoryTrends.data[subCategoryTrends.data.findIndex(trend => trend.monthString === monthYear)]

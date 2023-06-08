@@ -40,6 +40,7 @@ export interface SubCategoryTrend {
 }
 
 export interface SubCategoryContainer {
+  months: string[];
   data: {
     [key: string]: SubCategoryTrends;
   }

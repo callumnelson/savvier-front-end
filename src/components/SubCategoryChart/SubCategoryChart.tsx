@@ -30,9 +30,23 @@ const SubCategoryChart = (props: SubCategoryChartProps) => {
     luminosity: 'light'
   })
 
+  const handleSelectCategory = (evt: React.ChangeEvent<HTMLSelectElement>):void => {
+    setSelectedCategory(evt.currentTarget.value)
+    setCurrentSubCatData(data.data[evt.currentTarget.value])
+  }
+
   return (
     <div className={styles.container}>
       <h3>Monthly spending by Sub-Category</h3>
+      <select 
+        name="category" 
+        onChange={handleSelectCategory}
+        value={selectedCategory}
+      >
+        {Object.keys(data.data).map(cat => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
@@ -51,7 +65,10 @@ const SubCategoryChart = (props: SubCategoryChartProps) => {
             dataKey="monthString" 
           />
           <YAxis 
-            domain={[-7500, 0]}
+            domain={
+              [(dataMin:number) => (Math.floor(dataMin / 2500)*2500), 
+              (dataMax:number) => (Math.ceil(dataMax / 2500)*2500)]
+            }
             tickFormatter={(x) => currency(x as number, {precision: 0}).format()}
           />
           <Tooltip 
