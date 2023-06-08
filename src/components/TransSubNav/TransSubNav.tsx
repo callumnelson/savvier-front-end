@@ -23,6 +23,7 @@ const TransSubNav = (props: TransSubNavProps) => {
     type: 'Checking'
   })
   const [addAccount, setAddAccount] = useState<boolean>(false)
+  const [clickCount, setClickCount] = useState<number>(0)
 
   const handleFormSubmit = async (): Promise<void> => {
     await handleAddAccount(accountForm)
@@ -51,12 +52,17 @@ const TransSubNav = (props: TransSubNavProps) => {
       ))}
       <div 
         className={styles.unselected}
-        onClick={() => setAddAccount(!addAccount)}
+        onClick={() => {
+          setClickCount(clickCount+1)
+          setAddAccount(!addAccount)
+        }}
       >
         <h4>
           +Add Account
         </h4>
       </div>
+      {
+      !!clickCount &&
       <form 
         onSubmit={handleFormSubmit}
         className={addAccount ? styles.showForm : styles.hideForm}
@@ -86,6 +92,7 @@ const TransSubNav = (props: TransSubNavProps) => {
           Add
         </button>
       </form>
+      }
     </div>
   )
 }

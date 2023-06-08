@@ -54,11 +54,11 @@
 }
 
 .showForm {
-  animation: showForm 1.5s ease forwards;
+  animation: showForm 1s ease forwards;
 }
 
 .hideForm { 
-  animation: hideForm 1.5s ease forwards;
+  animation: hideForm 1s ease forwards;
 }
 
 @keyframes showForm {
@@ -73,7 +73,7 @@
 @keyframes hideForm {
   from {
     transform: translateY(0); 
-    opacity: 1;
+    opacity: .5;
   }
   to {
     transform: translateY(-100%);
