@@ -23,6 +23,7 @@ import './App.css'
 // types
 import { Profile, User } from './types/models'
 import Transactions from './pages/Transactions/Transactions'
+import Loading from './pages/Loading/Loading'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -52,7 +53,7 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
   
-  if (user && !profile) return <h1>Loading...</h1>
+  if (user && !profile) return <Loading />
 
   return (
     <>

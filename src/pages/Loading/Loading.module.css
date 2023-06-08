@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.container img {
+  width: max(60%, 600px);
+  margin-bottom: -200px;
+  margin-top: -15%;
+}
+
+.container div {
+  width: max(60%, 600px);
+  height: 2px;
+  background-color: #57d9b8;
+  animation: loader 1s infinite linear;
+}
+
+@keyframes loader {
+  from {width: 0;}
+  to {width: max(60%, 600px);}
+}
+
