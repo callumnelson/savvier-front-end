@@ -31,7 +31,8 @@ const SubCategoryChart = (props: SubCategoryChartProps) => {
   })
 
   return (
-    <div>
+    <div className={styles.container}>
+      <h3>Monthly spending by Sub-Category</h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}

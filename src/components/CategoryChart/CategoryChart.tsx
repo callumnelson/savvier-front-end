@@ -9,6 +9,9 @@ import { Profile } from '../../types/models';
 import * as dataService from '../../services/dataService'
 import currency from 'currency.js';
 
+// css
+import styles from './CategoryChart.module.css'
+
 interface CategoryChartProps {
   profile: Profile
 }
@@ -25,7 +28,8 @@ const CategoryChart = (props: CategoryChartProps) => {
   })
 
   return (
-    <div>
+    <div className={styles.container}>
+    <h3>Monthly spending by Sub-Category</h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
