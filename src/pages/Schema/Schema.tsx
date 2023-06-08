@@ -61,7 +61,7 @@ const Schema = (props: SchemaProps) => {
       <PageHeader
         pageName='Schema'
       />
-      <p>Use this page to add or edit the categories and sub-categories into which you will code your expenses and earnings.</p>
+      <p>Use this page to add or edit the categories and sub-categories into which you will code your expenses and earnings. <strong>Note that deleting a sub-category will reset coding for any transactions previously coded to that sub-category.</strong></p>
       <section>
         <div className={styles.data}>
           <div className={styles.newCategory}>

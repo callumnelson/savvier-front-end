@@ -34,9 +34,7 @@ function App(): JSX.Element {
   useEffect((): void => {
     const fetchProfile = async (): Promise<void> => {
       try {
-        console.log('fetching')
         const profileData = await profileService.getUserProfile()
-        console.log(profileData)
         setProfile(profileData)
       } catch (error) {
         console.log(error)
