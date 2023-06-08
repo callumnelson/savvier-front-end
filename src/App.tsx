@@ -24,6 +24,7 @@ import './App.css'
 import { Profile, User } from './types/models'
 import Transactions from './pages/Transactions/Transactions'
 import Loading from './pages/Loading/Loading'
+import Schema from './pages/Schema/Schema'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -85,6 +86,17 @@ function App(): JSX.Element {
           profile && 
           <ProtectedRoute user={user}>
             <Transactions
+              setProfile={setProfile}
+              profile={profile}
+            />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/schema" 
+        element={
+          profile && 
+          <ProtectedRoute user={user}>
+            <Schema
               setProfile={setProfile}
               profile={profile}
             />

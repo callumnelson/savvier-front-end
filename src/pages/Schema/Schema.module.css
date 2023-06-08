@@ -1,0 +1,23 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container section {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  padding: 30px;
+  height: calc(100% - 83px);
+}
+
+.headers {
+  height: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  border-right: 0.5px solid var(--linen);
+  gap: 15px;
+  padding-right: 30px;
+}

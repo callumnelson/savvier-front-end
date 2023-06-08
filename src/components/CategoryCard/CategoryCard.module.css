@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  min-width: 150px;
+}
+
+.container h2 {
+  margin-bottom: 15px;
+}
+
+.subCategories {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subCategories div {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.subCategories form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subCategories form input {
+  padding: 5px 10px;
+  width: 75%;
+}
+
+.subCategories span:hover {
+  cursor: pointer;
+}

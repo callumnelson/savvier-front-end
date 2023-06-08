@@ -34,6 +34,9 @@ const NavBar = (props: NavBarProps): JSX.Element => {
         <p className={navPath === 'transactions' ? styles.selected: styles.unselected}>
           <NavLink to="/transactions">Transactions</NavLink>
         </p>
+        <p className={navPath === 'schema' ? styles.selected: styles.unselected}>
+          <NavLink to="/schema">Schema</NavLink>
+        </p>
       </div>
       <div className={styles.auth}>
         <p className={navPath === 'change password' ? styles.selected: styles.unselected}>

@@ -26,6 +26,10 @@ export interface AccountFormData {
   type: 'Checking' | 'Savings' | 'Credit Card' | 'Other'
 }
 
+export interface SubCatForm {
+  name: string;
+}
+
 
 /* ---------===== auth forms =====--------- */
 
