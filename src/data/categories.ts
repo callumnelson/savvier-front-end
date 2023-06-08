@@ -89,7 +89,8 @@ export const subCategories: SubCategory = {
     'Relief Payment',
     'Taxes',
     'Dividend',
-    'Wedding Gift'
+    'Wedding Gift',
+    'Paycheck'
   ],
   uncoded: ['-'],
   exclude: [

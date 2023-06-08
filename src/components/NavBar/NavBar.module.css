@@ -41,6 +41,10 @@
   display: flex;
 }
 
+.container p:hover {
+  cursor: pointer;
+}
+
 .unselected {
   border-left: 1.5px solid transparent;
 }
