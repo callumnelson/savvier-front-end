@@ -21,7 +21,7 @@ const Landing = (props: LandingProps): JSX.Element => {
 
   useEffect(() => {
     if (user) navigate('/dashboard')
-  }, [user]);
+  }, [navigate, user]);
 
   return (
     <main className={styles.container}>

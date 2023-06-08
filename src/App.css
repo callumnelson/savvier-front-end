@@ -74,6 +74,11 @@ input, select {
   border: 2px solid var(--forestGreen);
 }
 
+select option {
+  background-color: #242424;
+  color: var(--linen);
+}
+
 input {
   padding: 10px
 }
