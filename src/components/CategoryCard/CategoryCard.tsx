@@ -82,7 +82,7 @@ const CategoryCard = (props: CategoryCardProps) => {
             type="text" 
             name="name"
             value={subCatForm.name}
-            placeholder='Add new...'
+            placeholder='New sub-category...'
             onChange={handleSubCatFormChange}
           />
           <button type="submit">

@@ -30,6 +30,10 @@ export interface SubCatForm {
   name: string;
 }
 
+export interface CatForm {
+  name: string;
+}
+
 
 /* ---------===== auth forms =====--------- */
 

@@ -10,8 +10,9 @@ import * as categoriesService from '../../services/categoriesService'
 import * as subCategoriesService from '../../services/subCategoriesService'
 
 // types
-import { Profile, SubCategory } from '../../types/models';
-import { SubCatForm } from '../../types/forms';
+import { Category, Profile, SubCategory } from '../../types/models';
+import { CatForm, SubCatForm } from '../../types/forms';
+import { useState } from 'react';
 
 interface SchemaProps {
   profile: Profile;
@@ -20,6 +21,13 @@ interface SchemaProps {
 
 const Schema = (props: SchemaProps) => {
   const { profile, setProfile } = props
+  const [catForm, setCatForm] = useState<CatForm>({
+    name: ''
+  })
+
+  const handleCatFormChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    setCatForm({...catForm, [evt.currentTarget.name]: evt.currentTarget.value})
+  }
 
   const handleAddSubCategory = async (categoryId: number, subCatFormData: SubCatForm): Promise<void> => {
     const newSubCategory: SubCategory = await categoriesService.createSubCategory(categoryId, subCatFormData)
@@ -29,6 +37,13 @@ const Schema = (props: SchemaProps) => {
         :
         cat
     ))})
+  }
+  
+  const handleAddCategory = async (evt: React.FormEvent): Promise<void> => {
+    evt.preventDefault()
+    const newCategory: Category = await categoriesService.create(catForm)
+    setProfile({...profile, categories: [newCategory, ...profile.categories]})
+    setCatForm({name: ''})
   }
 
   const handleDeleteSubCategory = async(categoryId: number, subCategoryId: number): Promise<void> => {
@@ -46,14 +61,28 @@ const Schema = (props: SchemaProps) => {
       <PageHeader
         pageName='Schema'
       />
+      <p>Use this page to add or edit the categories and sub-categories into which you will code your expenses and earnings.</p>
       <section>
-        <div className={styles.headers}>
-          <h2>Categories</h2>
-          <h3>Sub Categories</h3>
-        </div>
         <div className={styles.data}>
+          <div className={styles.newCategory}>
+            <form
+              onSubmit={handleAddCategory}
+            >
+              <input 
+                type="text" 
+                name="name"
+                value={catForm.name}
+                placeholder='New category...'
+                onChange={handleCatFormChange}
+              />
+              <button type="submit">
+                +
+              </button>
+            </form>
+          </div>
           {profile.categories.map(cat => (
             <CategoryCard
+              key={cat.id}
               category={cat}
               handleAddSubCategory={handleAddSubCategory}
               handleDeleteSubCategory={handleDeleteSubCategory}

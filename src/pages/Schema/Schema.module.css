@@ -1,23 +1,38 @@
-
 .container {
   display: flex;
   flex-direction: column;
+}
+
+.container > p {
+  margin-top: 30px;
 }
 
 .container section {
   width: 100%;
   flex-grow: 1;
   display: flex;
-  padding: 30px;
+  padding: 30px 0;
   height: calc(100% - 83px);
 }
 
-.headers {
-  height: 100%;
+.data {
   display: flex;
-  align-items: start;
-  flex-direction: column;
-  border-right: 0.5px solid var(--linen);
-  gap: 15px;
-  padding-right: 30px;
+  padding: 0 30px;
+  overflow-x: overlay;
+}
+
+.data form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data form input {
+  padding: 5px 10px;
+  width: 75%;
+}
+
+.newCategory {
+  min-width: 250px;
+  padding: 0 15px;
 }

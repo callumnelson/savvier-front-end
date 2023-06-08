@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   padding: 0 15px;
-  min-width: 150px;
+  min-width: 250px;
+  height: 100%;
+  border-left: 0.5px dashed var(--linen);
 }
 
 .container h2 {
@@ -20,6 +22,11 @@
   display: flex;
   justify-content: space-between;
   padding-right: 10px;
+}
+
+.subCategories div p {
+  overflow-x: hidden;
+  margin-right: 10px;
 }
 
 .subCategories form {
