@@ -47,25 +47,33 @@ const CategoryCard = (props: CategoryCardProps) => {
 
   return (
     <div className={styles.container}>
-      <h2>{category.name}</h2>
+      <div className={styles.header}>
+        <h2>{category.name}</h2>
+      </div>
       <div className={styles.subCategories}>
         {category.subCategories.map(subCat => (
-          !(deleteSub === subCat.id) ? 
+          !(deleteSub === subCat.id)  ? 
           <div 
             key={subCat.id}
           >
             <p>{subCat.name}</p>
-            <span
-              onClick={() => setDeleteSub(subCat.id)}
-            >X</span>
+            {
+              category.name !== 'Uncoded' &&
+              <span
+                onClick={() => setDeleteSub(subCat.id)}
+              >X</span>
+            } 
           </div>
           :
           <div
             key={subCat.id}
           >
-            <p>Are you sure?</p>
+            <p
+              style={{color: 'var(--leather)'}}
+            >Are you sure?</p>
             <span
               onClick={() => setDeleteSub(null)}
+              style={{color: 'var(--limeGreen)'}}
             >
               N
             </span>
@@ -75,20 +83,23 @@ const CategoryCard = (props: CategoryCardProps) => {
             >Y</span>
           </div>
         ))}
-        <form
-          onSubmit={handleSubCatFormSubmit}
-        >
-          <input 
-            type="text" 
-            name="name"
-            value={subCatForm.name}
-            placeholder='New sub-category...'
-            onChange={handleSubCatFormChange}
-          />
-          <button type="submit">
-            +
-          </button>
-        </form>
+        {
+          category.name !== 'Uncoded' && 
+          <form
+            onSubmit={handleSubCatFormSubmit}
+          >
+            <input 
+              type="text" 
+              name="name"
+              value={subCatForm.name}
+              placeholder='New sub-category...'
+              onChange={handleSubCatFormChange}
+            />
+            <button type="submit">
+              +
+            </button>
+          </form>
+        }
       </div>
     </div>
   )

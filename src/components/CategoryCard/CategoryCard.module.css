@@ -39,6 +39,16 @@
   width: 75%;
 }
 
+.subCategories span {
+  padding: 0 2px;
+}
+
+.subCategories > .no:hover {
+  color: var(--limeGreen);
+}
+
 .subCategories span:hover {
   cursor: pointer;
+  font-weight: 600;
+  color: var(--leather);
 }
