@@ -43,7 +43,6 @@ const Dashboard = (props: DashboardProps) => {
           handleChartClick={handleChartClick}
         ></DashSubNav>
         <div className={styles.chartContainer}>
-          <div className={styles.chart}>
             {
               selectedChart.id === 1 &&
               <OverallTrendChart
@@ -62,7 +61,6 @@ const Dashboard = (props: DashboardProps) => {
                 profile={profile}
               />
             }
-          </div>
         </div>
       </section>
     </main>
