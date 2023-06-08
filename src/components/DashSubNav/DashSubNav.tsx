@@ -1,6 +1,3 @@
-// npm modules
-import { useState } from 'react'
-
 // css
 import styles from './DashSubNav.module.css'
 

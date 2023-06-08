@@ -1,4 +1,3 @@
-import currency from "currency.js";
 import { CategoryTrend, CategoryTrends, OverallTrend, OverallTrends } from "../types/data";
 import { StateTransaction } from "../types/models";
 

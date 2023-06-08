@@ -1,5 +1,5 @@
 // npm modules
-import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Area, Bar, BarChart } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar, BarChart } from 'recharts';
 import randomColor from 'randomcolor'
 
 // types
