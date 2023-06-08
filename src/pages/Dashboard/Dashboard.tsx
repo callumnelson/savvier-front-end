@@ -13,6 +13,7 @@ import { Chart } from '../../types/data';
 
 // data
 import { charts } from '../../data/charts';
+import CategoryChart from '../../components/CategoryChart/CategoryChart';
 
 
 interface DashboardProps {
@@ -45,6 +46,12 @@ const Dashboard = (props: DashboardProps) => {
             {
               selectedChart.id === 1 &&
               <OverallTrendChart
+                profile={profile}
+              />
+            }
+            {
+              selectedChart.id === 2 &&
+              <CategoryChart
                 profile={profile}
               />
             }

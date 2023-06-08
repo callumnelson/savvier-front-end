@@ -6,17 +6,29 @@ export interface Chart {
   id: number;
 }
 
-export interface MonthlyTrends {
+export interface OverallTrends {
   months: string[];
-  data: MonthlyTrend[];
+  data: OverallTrend[];
 }
 
-export interface MonthlyTrend {
+export interface OverallTrend {
   monthString: string;
-  incomeNum: number;
-  spendingNum: number;
-  savingsNum: number;
-  savingsStr: string;
-  incomeStr: string;
-  spendingStr: string;
+  data: {
+    incomeNum: number;
+    spendingNum: number;
+    savingsNum: number;
+  }
+}
+
+export interface CategoryTrends {
+  months: string[];
+  data: CategoryTrend[];
+  categories: string[];
+}
+
+export interface CategoryTrend {
+  monthString: string;
+  data: {
+    [key: string]: number;
+  }
 }

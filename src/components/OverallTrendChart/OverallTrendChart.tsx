@@ -1,5 +1,5 @@
 // npm modules
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts';
 
 // types
 import { Profile } from '../../types/models';
@@ -15,11 +15,11 @@ interface OverallTrendChartProps {
 const OverallTrendChart = (props: OverallTrendChartProps) => {
   const { profile } = props
   
-  const data = dataService.computeMonthlyTrends(profile.profileTransactions)
+  const data = dataService.computeOverallTrends(profile.profileTransactions)
 
   const gradientOffset = () => {
-    const dataMax = Math.max(...data.data.map((i) => i.savingsNum));
-    const dataMin = Math.min(...data.data.map((i) => i.savingsNum));
+    const dataMax = Math.max(...data.data.map((i) => i.data.savingsNum));
+    const dataMin = Math.min(...data.data.map((i) => i.data.savingsNum));
   
     if (dataMax <= 0) {
       return 0;
@@ -64,9 +64,9 @@ const OverallTrendChart = (props: OverallTrendChartProps) => {
             <stop offset={off} stopColor="red" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <Bar type="monotone" dataKey="incomeNum" stroke="#828aca" fill="#828aca" name='Income'/>
-        <Bar type="monotone" dataKey="spendingNum" fill= "#307fb8" stroke="#307fb8" name='Spending'/>
-        <Area type="monotone" dataKey="savingsNum" fill="url(#splitColor)" activeDot={{ r: 8 }} name='Savings' stroke="green"/>
+        <Bar type="monotone" dataKey="data.incomeNum" stroke="#828aca" fill="#828aca" name='Income'/>
+        <Bar type="monotone" dataKey="data.spendingNum" fill= "#307fb8" stroke="#307fb8" name='Spending'/>
+        <Area type="monotone" dataKey="data.savingsNum" fill="url(#splitColor)" activeDot={{ r: 8 }} name='Savings' stroke="green"/>
       </ComposedChart>
     </ResponsiveContainer>
   )
