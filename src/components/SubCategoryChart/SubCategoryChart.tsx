@@ -33,6 +33,7 @@ const SubCategoryChart = (props: SubCategoryChartProps) => {
   const handleSelectCategory = (evt: React.ChangeEvent<HTMLSelectElement>):void => {
     setSelectedCategory(evt.currentTarget.value)
     setCurrentSubCatData(data.data[evt.currentTarget.value])
+    setData({...data})
   }
 
   return (
