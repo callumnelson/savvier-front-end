@@ -47,13 +47,24 @@ const Schema = (props: SchemaProps) => {
   }
 
   const handleDeleteSubCategory = async(categoryId: number, subCategoryId: number): Promise<void> => {
-    await subCategoriesService.deleteSubCategory(subCategoryId)
-    setProfile({...profile, categories: profile.categories.map(cat => (
+    const updatedTransactions = await subCategoriesService.deleteSubCategory(subCategoryId)
+    const updatedIds: number[] = updatedTransactions.map(u => u.id)
+    setProfile({
+      ...profile, 
+      categories: profile.categories.map(cat => (
       cat.id === categoryId ? 
         {...cat, subCategories: cat.subCategories.filter(s => s.id !== subCategoryId)} 
         :
         cat
-    ))})
+      )),
+      profileTransactions: profile.profileTransactions.map( t => (
+        updatedIds.includes(t.id) 
+        ? 
+        {...t, subCategory: '-'}
+        : 
+        t
+      ))
+    })
   }
 
   return (
