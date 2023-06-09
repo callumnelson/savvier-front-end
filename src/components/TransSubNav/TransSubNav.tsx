@@ -25,7 +25,8 @@ const TransSubNav = (props: TransSubNavProps) => {
   const [addAccount, setAddAccount] = useState<boolean>(false)
   const [clickCount, setClickCount] = useState<number>(0)
 
-  const handleFormSubmit = async (): Promise<void> => {
+  const handleFormSubmit = async (evt: React.FormEvent): Promise<void> => {
+    evt.preventDefault()
     await handleAddAccount(accountForm)
     setAddAccount(false)
   }
