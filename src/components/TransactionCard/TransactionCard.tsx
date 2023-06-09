@@ -18,7 +18,6 @@ interface TransactionCardProps {
 
 const TransactionCard = (props: TransactionCardProps) => {
   const {transaction, profile, handleUpdateTransaction, handleDeleteTransaction } = props
-  // const [transState, setTransState] = useState<StateTransaction>(transaction)
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     profile.categories.filter(c => c.name === transaction.category)[0]
   )
@@ -30,7 +29,6 @@ const TransactionCard = (props: TransactionCardProps) => {
 
   const handleChangeCategory = async (evt: ChangeEvent<HTMLSelectElement>): Promise<void> => {
     const newSelectedCategory = profile.categories.filter(c => c.name === evt.currentTarget.selectedOptions[0].id)[0]
-    // setTransState({...transState, [evt.currentTarget.name]: evt.currentTarget.value, subCategory: '-'})
     setSelectedCategory(newSelectedCategory)
     setSubCategoryOptions(
       [...newSelectedCategory.subCategories].sort((a, b) => a.name > b.name ? 1 : -1)
@@ -41,7 +39,6 @@ const TransactionCard = (props: TransactionCardProps) => {
   }
 
   const handleChangeSubCategory = async (evt: ChangeEvent<HTMLSelectElement>): Promise<void> => {
-    // setTransState({...transState, [evt.currentTarget.name]: evt.currentTarget.value })
     await handleUpdateTransaction({
       ...profile.profileTransactions.filter(t => t.id === transaction.id)[0], [evt.currentTarget.name]: evt.currentTarget.value 
     })
