@@ -1,12 +1,12 @@
 # $avvier ([App](https://savvier.netflify.app/))
 
-I created $Savvier to make my own personal budgeting and finance easier. I got sick of loading data into a spreadsheet and haven't found any of the budgeting tools out there to be customizable enough. Users can create their own categories and subcategories for budgeting and track their progress against budgeting goals with a high degree of granularity. 
+I created $avvier to make my own personal budgeting and finance easier. I got sick of loading data into a spreadsheet and haven't found any of the budgeting tools out there to be customizable enough and repeatedly ask me to reconnect my accounts.
 
 ![App screenshot](https://github.com/callumnelson/savvier-front-end/blob/main/src/assets/images/screenshot.png)
 
 ## How it works 📗
 
-When users sign up for Savvier, they will automatically be provided two demo accounts and a year's worth of fake data. This enables users to explore the site without having to load their own data. They are also given a default categorization schema that they can build on and fully customize. Once they are ready, users can begin to upload their own data, which is as easy as downloading a csv of transactions from one of their accounts and uploading it to $Savvier
+$avvier create their own categories and subcategories for budgeting and track their progress against budgeting goals with a high degree of granularity. When users sign up for $avvier, they will automatically be provided two demo accounts and a year's worth of fake data. This enables users to explore the site without having to load their own data. They are also given a default categorization schema that they can build on and fully customize. Once they are ready, users can begin to upload their own data, which is as easy as downloading a csv of transactions from one of their accounts and uploading it to $avvier.
 
 ## Getting started 🏁
 
