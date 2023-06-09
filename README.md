@@ -34,8 +34,8 @@ Once they are signed up, users can:
 
 ## Attributions 🤩
 
-* (Currency.js)[https://currency.js.org/] provides easy parsing of financial data
-* (Recharts.js)[https://recharts.org/en-US] is an incredibly powerful and easy to use package for building beautiful charts within React
+* [Currency.js](https://currency.js.org/) provides easy parsing of financial data
+* [Recharts.js](https://recharts.org/en-US) is an incredibly powerful and easy to use package for building beautiful charts within React
 
 ## Ice Box Features ⏭️
 
