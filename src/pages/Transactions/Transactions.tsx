@@ -4,9 +4,6 @@ import { ChangeEvent, useState } from 'react';
 // css
 import styles from './Transactions.module.css'
 
-// data
-import { categories } from '../../data/categories'
-
 // types
 import { Profile, StateTransaction } from '../../types/models'
 

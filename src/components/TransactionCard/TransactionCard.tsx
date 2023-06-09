@@ -2,9 +2,6 @@
 import currency from "currency.js"
 import { ChangeEvent, useState } from "react"
 
-// data
-import { subCategories } from "../../data/categories"
-
 // css
 import styles from './TransactionCard.module.css'
 
