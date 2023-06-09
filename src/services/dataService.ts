@@ -30,13 +30,18 @@ export const computeOverallTrends = (transactions: StateTransaction[]): OverallT
           savingsNum: 0,
         }
       }
-      if (t.category === 'Income') monthlyTrend.data.incomeNum += t.amount
+      if (t.category === 'Income') {
+        monthlyTrend.data.incomeNum += t.amount
+        res.data.push(monthlyTrend)
+      }
       // don't count uncoded rows
-      else if (t.category !== 'Exclude') monthlyTrend.data.spendingNum += t.amount
-      monthlyTrend.data.incomeNum = Math.round(monthlyTrend.data.incomeNum)
-      monthlyTrend.data.spendingNum = Math.round(monthlyTrend.data.spendingNum)
-      monthlyTrend.data.savingsNum = monthlyTrend.data.incomeNum - monthlyTrend.data.spendingNum
-      res.data.push(monthlyTrend)
+      else if (t.category !== 'Exclude') {
+        monthlyTrend.data.spendingNum += t.amount
+        monthlyTrend.data.incomeNum = Math.round(monthlyTrend.data.incomeNum)
+        monthlyTrend.data.spendingNum = Math.round(monthlyTrend.data.spendingNum)
+        monthlyTrend.data.savingsNum = monthlyTrend.data.incomeNum - monthlyTrend.data.spendingNum
+        res.data.push(monthlyTrend)
+      }
     }
     return res
   }, res)
