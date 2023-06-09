@@ -2,7 +2,7 @@
 
 I created $Savvier to make my own personal budgeting and finance easier. I got sick of loading data into a spreadsheet and haven't found any of the budgeting tools out there to be customizable enough. Users can create their own categories and subcategories for budgeting and track their progress against budgeting goals with a high degree of granularity. 
 
-![App screenshot](https://github.com/callumnelson/savvier-front-end/src/assets/images/screenshot.png)
+![App screenshot](https://github.com/callumnelson/savvier-front-end/blob/main/src/assets/images/screenshot.png)
 
 ## How it works 📗
 
