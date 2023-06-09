@@ -41,6 +41,6 @@ Once they are signed up, users can:
 
 - [x] Implement custom category and subcategory schema
 - [x] Build out responsive dashboard with charts from Recharts.js
-- [] Create a budgeting & planning section to allow users to set goals and track progress towards them
-- [] Implement a mobile-friendly version of the app
-- [] Implement state management through Redux
+- [ ] Create a budgeting & planning section to allow users to set goals and track progress towards them
+- [ ] Implement a mobile-friendly version of the app
+- [ ] Implement state management through Redux
