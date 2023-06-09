@@ -208,7 +208,7 @@ const Transactions = (props: TransactionsProps) => {
                 <TransactionCard
                   key={t.id}
                   transaction={t}
-                  categories={categories}
+                  profile={profile}
                   handleUpdateTransaction={handleUpdateTransaction}
                   handleDeleteTransaction={handleDeleteTransaction}
                 />

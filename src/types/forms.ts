@@ -12,14 +12,14 @@ export interface TransactionsFormData {
   transactions: UploadTransaction[]
 }
 
-export interface Category {
-  value: string;
-  schemaName: string;
-}[]
+// export interface Category {
+//   value: string;
+//   schemaName: string;
+// }[]
 
-export interface SubCategory {
-  [key: string]: string[];
-}
+// export interface SubCategory {
+//   [key: string]: string[];
+// }
 
 export interface AccountFormData {
   name: string;

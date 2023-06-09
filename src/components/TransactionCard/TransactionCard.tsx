@@ -9,28 +9,36 @@ import { subCategories } from "../../data/categories"
 import styles from './TransactionCard.module.css'
 
 // types
-import { StateTransaction } from "../../types/models"
-import { Category } from "../../types/forms"
+import { Profile, StateTransaction, SubCategory } from "../../types/models"
+import { Category } from "../../types/models"
 
 interface TransactionCardProps {
   transaction: StateTransaction;
-  categories: {value: string; schemaName: string}[];
+  profile: Profile;
   handleUpdateTransaction: (transaction: StateTransaction) => Promise<void>
   handleDeleteTransaction: (transaction: StateTransaction) => Promise<void>
 }
 
 const TransactionCard = (props: TransactionCardProps) => {
-  const { transaction, categories, handleUpdateTransaction, handleDeleteTransaction } = props
+  const {transaction, profile, handleUpdateTransaction, handleDeleteTransaction } = props
   const [transState, setTransState] = useState<StateTransaction>(transaction)
-  const [selectedCategory, setSelectedCategory] = useState<Category>(categories.filter(c => c.value === transaction.category)[0])
-  const [subcategoryOptions, setSubCategoryOptions] = useState<string[]>(subCategories[categories.filter(c => c.value === transaction.category)[0].schemaName])
+  const [selectedCategory, setSelectedCategory] = useState<Category>(
+    profile.categories.filter(c => c.name === transaction.category)[0]
+  )
+  const [subcategoryOptions, setSubCategoryOptions] = useState<SubCategory[]>(
+    profile.categories.filter(c => c.name === selectedCategory.name)[0].subCategories
+    .sort((a, b) => a.name > b.name ? 1 : -1)  
+  )
 
 
   const handleChangeCategory = async (evt: ChangeEvent<HTMLSelectElement>): Promise<void> => {
+    const newSelectedCategory = profile.categories.filter(c => c.name === evt.currentTarget.selectedOptions[0].id)[0]
     setTransState({...transState, [evt.currentTarget.name]: evt.currentTarget.value, subCategory: '-'})
-    setSelectedCategory(categories.filter(c => c.schemaName === evt.currentTarget.selectedOptions[0].id)[0])
-    setSubCategoryOptions(subCategories[evt.currentTarget.selectedOptions[0].id])
-    await handleUpdateTransaction({...transState, [evt.currentTarget.name]: evt.currentTarget.value})
+    setSelectedCategory(newSelectedCategory)
+    setSubCategoryOptions(
+      [...newSelectedCategory.subCategories].sort((a, b) => a.name > b.name ? 1 : -1)
+    )
+    await handleUpdateTransaction({...transState, [evt.currentTarget.name]: evt.currentTarget.value, subCategory: '-'})
   }
 
   const handleChangeSubCategory = async (evt: ChangeEvent<HTMLSelectElement>): Promise<void> => {
@@ -51,16 +59,16 @@ const TransactionCard = (props: TransactionCardProps) => {
         <select 
           name="category" 
           id="category"
-          value={selectedCategory.value}
+          value={selectedCategory.name}
           onChange={handleChangeCategory}
         >
-          {categories.map(c => (
+          {profile.categories.map(c => (
             <option 
-              key={c.schemaName}
-              value={c.value}
-              id={c.schemaName}
+              key={c.name}
+              value={c.name}
+              id={c.name}
             >
-              {c.value}
+              {c.name}
             </option>
           ))}
         </select>
@@ -72,17 +80,12 @@ const TransactionCard = (props: TransactionCardProps) => {
           value={transState.subCategory}
           onChange={handleChangeSubCategory}
         >
-          <option
-            value='-'
-          >
-            -
-          </option>
           {subcategoryOptions.map(sc => (
             <option 
-              key={sc}
-              value={sc}
+              key={sc.name}
+              value={sc.name}
             >
-              {sc}
+              {sc.name}
             </option>
           ))}
         </select>

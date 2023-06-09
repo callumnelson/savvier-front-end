@@ -1,4 +1,3 @@
-import { SubCategory } from "../types/forms"
 
 export const categories = [ 
   {value: '-', schemaName: 'uncoded'}, 

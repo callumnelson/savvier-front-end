@@ -6,7 +6,7 @@ export interface Transaction {
   transactionDate: string;
   description: string;
   amount: number;
-  category: 'Fun' | 'Food/Necessities' |	'Housing'	| 'Transportation' | 'Utilities' | 'Medical/Health' | 'Savings' | 'Insurance' | 'Personal' | 'Misc' | 'Income' | '-' | 'Exclude';
+  category: string;
   subCategory: string;
   codingStatus: 'Pending' | 'Saved';
   createdAt: string;
