@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > p {
+  margin: 30px 30px 0 30px;
+  text-align: center;
+}
+
+.container section {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  padding: 30px 0;
+  height: calc(100% - 83px);
+}
+
+.data {
+  display: flex;
+  padding: 0 30px;
+  overflow-x: overlay;
+}
+
+.data form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data form input {
+  padding: 5px 10px;
+  width: 75%;
+}
+
+.newCategory {
+  min-width: 250px;
+  padding: 0 15px;
+}

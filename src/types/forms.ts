@@ -12,18 +12,26 @@ export interface TransactionsFormData {
   transactions: UploadTransaction[]
 }
 
-export interface Category {
-  value: string;
-  schemaName: string;
-}[]
+// export interface Category {
+//   value: string;
+//   schemaName: string;
+// }[]
 
-export interface SubCategory {
-  [key: string]: string[];
-}
+// export interface SubCategory {
+//   [key: string]: string[];
+// }
 
 export interface AccountFormData {
   name: string;
   type: 'Checking' | 'Savings' | 'Credit Card' | 'Other'
+}
+
+export interface SubCatForm {
+  name: string;
+}
+
+export interface CatForm {
+  name: string;
 }
 
 

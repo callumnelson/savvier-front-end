@@ -17,7 +17,7 @@
   width: max(60%, 600px);
   height: 2px;
   background-color: #57d9b8;
-  animation: loader 1s infinite linear;
+  animation: loader 1s 5 linear;
 }
 
 @keyframes loader {

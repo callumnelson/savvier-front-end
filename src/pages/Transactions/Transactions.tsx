@@ -4,9 +4,6 @@ import { ChangeEvent, useState } from 'react';
 // css
 import styles from './Transactions.module.css'
 
-// data
-import { categories } from '../../data/categories'
-
 // types
 import { Profile, StateTransaction } from '../../types/models'
 
@@ -208,7 +205,7 @@ const Transactions = (props: TransactionsProps) => {
                 <TransactionCard
                   key={t.id}
                   transaction={t}
-                  categories={categories}
+                  profile={profile}
                   handleUpdateTransaction={handleUpdateTransaction}
                   handleDeleteTransaction={handleDeleteTransaction}
                 />

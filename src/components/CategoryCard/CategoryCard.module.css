@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  min-width: 250px;
+  height: 100%;
+  border-left: 0.5px dashed var(--linen);
+}
+
+.container h2 {
+  margin-bottom: 15px;
+}
+
+.subCategories {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.subCategories div {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.subCategories div p {
+  overflow-x: hidden;
+  margin-right: 10px;
+}
+
+.subCategories form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subCategories form input {
+  padding: 5px 10px;
+  width: 75%;
+}
+
+.subCategories span {
+  padding: 0 2px;
+}
+
+.subCategories > .no:hover {
+  color: var(--limeGreen);
+}
+
+.subCategories span:hover {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--leather);
+}
