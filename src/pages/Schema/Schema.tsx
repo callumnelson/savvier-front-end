@@ -81,6 +81,7 @@ const Schema = (props: SchemaProps) => {
             </form>
           </div>
           {profile.categories.map(cat => (
+            cat.name !== '-' &&
             <CategoryCard
               key={cat.id}
               category={cat}

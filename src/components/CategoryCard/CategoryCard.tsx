@@ -45,6 +45,8 @@ const CategoryCard = (props: CategoryCardProps) => {
     }
   }
 
+  category.subCategories.sort((a, b) => a.name > b.name ? 1 : -1)
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -56,12 +58,14 @@ const CategoryCard = (props: CategoryCardProps) => {
           <div 
             key={subCat.id}
           >
-            <p>{subCat.name}</p>
             {
-              category.name !== 'Uncoded' &&
-              <span
-                onClick={() => setDeleteSub(subCat.id)}
-              >X</span>
+              subCat.name !== '-' &&
+              <>
+                <p>{subCat.name}</p>
+                <span
+                  onClick={() => setDeleteSub(subCat.id)}
+                >X</span>
+              </>
             } 
           </div>
           :
@@ -83,23 +87,20 @@ const CategoryCard = (props: CategoryCardProps) => {
             >Y</span>
           </div>
         ))}
-        {
-          category.name !== 'Uncoded' && 
-          <form
-            onSubmit={handleSubCatFormSubmit}
-          >
-            <input 
-              type="text" 
-              name="name"
-              value={subCatForm.name}
-              placeholder='New sub-category...'
-              onChange={handleSubCatFormChange}
-            />
-            <button type="submit">
-              +
-            </button>
-          </form>
-        }
+        <form
+          onSubmit={handleSubCatFormSubmit}
+        >
+          <input 
+            type="text" 
+            name="name"
+            value={subCatForm.name}
+            placeholder='New sub-category...'
+            onChange={handleSubCatFormChange}
+          />
+          <button type="submit">
+            +
+          </button>
+        </form>
       </div>
     </div>
   )
