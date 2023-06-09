@@ -37,6 +37,7 @@ const Transactions = (props: TransactionsProps) => {
   const [search, setSearch] = useState<string>('')
   const [showModal, setShowModal] = useState<boolean>(false)
   const [deleteAccount, setDeleteAccount] = useState<boolean>(false)
+  console.log(profile)
   
   const headers = [
     'Date',
