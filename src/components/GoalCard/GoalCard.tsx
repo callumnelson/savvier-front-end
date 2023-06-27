@@ -1,5 +1,5 @@
 // npm modules
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 // css
 import styles from './GoalCard.module.css'

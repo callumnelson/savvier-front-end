@@ -1,6 +1,5 @@
 // npm modules
 import { NavLink, useLocation } from 'react-router-dom'
-import { useState } from 'react'
 
 // assets
 import defaultProfile from '../../assets/icons/profile.png'
@@ -31,6 +30,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     >
       <div
         onClick={() => setHidden(!hidden)}
+        style={{justifyContent: hidden ? 'center' : 'end'}}
       >
         {hidden ? "-->" : "<--"}
       </div>

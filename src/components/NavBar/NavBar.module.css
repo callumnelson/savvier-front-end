@@ -86,7 +86,6 @@
 .container > div:first-child {
   width: 100%;
   display: flex;
-  justify-content: end;
   padding: 15px 15px 0 15px;
 }
 
