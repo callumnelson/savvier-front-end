@@ -30,6 +30,7 @@ export interface Category {
   id: number;
   name: string;
   subCategories: SubCategory[];
+  goal: number;
   profileId: number;
   createdAt: string;
   updatedAt: string;
@@ -39,6 +40,7 @@ export interface SubCategory {
   id: number;
   name: string;
   categoryId: number;
+  goal: number;
   createdAt: string;
   updatedAt: string;
 }
