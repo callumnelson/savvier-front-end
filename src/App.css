@@ -43,10 +43,10 @@ a:visited {
 }
 
 main {
-  width: min(85%, calc(100vw - 210px));
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 button {

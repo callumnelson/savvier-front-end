@@ -1,13 +1,20 @@
 .container {
-  width: max(15%, 210px);
   height: 100%;
   display: flex;
+  flex-direction: column;
+  background-color: var(--storm);
+}
+
+.showNav {
+  flex-grow: 1;
+  display: flex;
+  list-style: none;
   align-items: center;
   flex-direction: column;
   background-color: var(--storm);
   justify-content: space-between;
-  list-style: none;
 }
+
 
 .info {
   width: 100%;
@@ -74,4 +81,23 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.container > div:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 15px 15px 0 15px;
+}
+
+.container > div:first-child:hover {
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+}
+
+.hideNav * {
+  display: none;
+  border: none;
 }

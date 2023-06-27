@@ -30,6 +30,7 @@ import Goals from './pages/Goals/Goals'
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [hidden, setHidden] = useState<boolean>(false)
   const navigate = useNavigate()
 
   useEffect((): void => {
@@ -62,6 +63,8 @@ function App(): JSX.Element {
     {user && profile
       && 
     <NavBar 
+      hidden={hidden}
+      setHidden={setHidden}
       user={user} 
       profile={profile}
       handleLogout={handleLogout} 
