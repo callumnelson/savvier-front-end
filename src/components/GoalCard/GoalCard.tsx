@@ -20,7 +20,11 @@ const GoalCard = (props: GoalCardProps) => {
 
   return (
     <div className={styles.container}>
-      <h3>{category}</h3>
+      <h4>{category}</h4>
+      <div>
+        <p>Goal:</p>
+        <p>##</p>
+      </div>
     </div>
   )
 }

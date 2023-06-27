@@ -11,6 +11,7 @@ import * as dataService from '../../services/dataService'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import { Profile } from '../../types/models'
 import GoalCard from '../../components/GoalCard/GoalCard';
+import GoalsSubNav from '../../components/GoalsSubNav/GoalsSubNav'
 
 // types
 interface GoalsProps {
@@ -38,16 +39,21 @@ const Goals = (props: GoalsProps) => {
     <main className={styles.container}>
       <PageHeader pageName='Goals'></PageHeader>
       <section>
-        <nav> Goals Nav </nav>
+        <GoalsSubNav 
+          data={data}
+          />
         <div className={styles.table}>
-          {catOrder.map(cat => (
-            !['Exclude', '-'].includes(cat.name) &&
-            <GoalCard 
-              category={cat.name}
-              data={data}
-              setCatOrder={setCatOrder}
-            />
-          ))}
+          <nav> Goals Nav </nav>
+          <div className={styles.dataContainer}>
+            {catOrder.map(cat => (
+              !['Exclude', '-'].includes(cat.name) &&
+              <GoalCard 
+                category={cat.name}
+                data={data}
+                setCatOrder={setCatOrder}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </main>

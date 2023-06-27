@@ -1,25 +1,35 @@
+.container {
+  overflow: hidden;
+}
 
 .container section {
   width: 100%;
   flex-grow: 1;
   display: flex;
-  padding: 30px;
-  flex-direction: column;
+  padding: 0 30px;
   height: calc(100% - 83px);
 }
 
 .container nav {
   display: flex;
-  margin-bottom: 30px;
+  align-items: center;
   justify-content: center;
+  padding: 15px;
 }
 
 .table {
+  width: 85%;
+  margin-bottom: 20px;
+  height: calc(100% - 60px);
+}
+
+.dataContainer {
+  height: 100%;
   display: flex;
   padding: 0 30px;
   overflow-x: overlay;
 }
 
-.table > div:nth-child(2) {
+.dataContainer > div:nth-child(2) {
   margin-right: 30px;
 }

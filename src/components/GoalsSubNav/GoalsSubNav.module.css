@@ -1,0 +1,21 @@
+.container {
+  width: 15%;
+  display: flex;
+  padding-top: 60px;
+  flex-direction: column;
+  border-right: 0.5px solid var(--linen);
+}
+
+.container > div {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.container > div * {
+  padding: 2px 0;
+}
+
+.container > div > p {
+  padding-left: 10px;
+}
