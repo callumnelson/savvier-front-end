@@ -16,7 +16,7 @@ export const computeOverallTrends = (transactions: StateTransaction[]): OverallT
       const monthlyTrend = res.data[res.data.findIndex(trend => trend.monthString === monthYear)]
       if (t.category === 'Income') monthlyTrend.data.incomeNum += t.amount
       // don't count uncoded rows
-      else if (t.category !== 'Exclude') monthlyTrend.data.spendingNum += t.amount
+      else if (t.category !== 'Exclude' && t.category !== '-') monthlyTrend.data.spendingNum += t.amount
       monthlyTrend.data.incomeNum = Math.round(monthlyTrend.data.incomeNum)
       monthlyTrend.data.spendingNum = Math.round(monthlyTrend.data.spendingNum)
       monthlyTrend.data.savingsNum = monthlyTrend.data.incomeNum + monthlyTrend.data.spendingNum
@@ -35,7 +35,7 @@ export const computeOverallTrends = (transactions: StateTransaction[]): OverallT
         res.data.push(monthlyTrend)
       }
       // don't count uncoded rows
-      else if (t.category !== 'Exclude') {
+      else if (t.category !== 'Exclude' && t.category !== '-') {
         monthlyTrend.data.spendingNum += t.amount
         monthlyTrend.data.incomeNum = Math.round(monthlyTrend.data.incomeNum)
         monthlyTrend.data.spendingNum = Math.round(monthlyTrend.data.spendingNum)

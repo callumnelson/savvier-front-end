@@ -9,11 +9,24 @@
 .container div {
   width: 100%;
   display: flex;
+  padding: 15px 0;
   align-items: center;
   flex-direction: column;
 }
 
+.container div p {
+  padding: 2px 0;
+}
+
 .container input {
-  width: 90%;
+  width: 80%;
+  padding: 5px 0;
   text-align: center;
+}
+
+.goal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 43px;
 }

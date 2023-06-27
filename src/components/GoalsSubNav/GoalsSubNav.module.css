@@ -1,7 +1,7 @@
 .container {
   width: 15%;
   display: flex;
-  padding-top: 60px;
+  padding-top: 50px;
   flex-direction: column;
   border-right: 0.5px solid var(--linen);
 }
@@ -17,5 +17,7 @@
 }
 
 .container > div > p {
-  padding-left: 10px;
+  padding: 2px 0 2px 10px;
+  border-bottom: 0.25px dashed var(--linen);
+  border-top: 0.25px dashed var(--linen);
 }

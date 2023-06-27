@@ -31,7 +31,7 @@ const Goals = (props: GoalsProps) => {
       return {name: c.name, order: c.name === 'Income' ? -2 : i, goal: c.goal}
     }), {
       order: -1,
-      name: 'Savings',
+      name: 'Saving',
       goal: 0,
     }].sort((a, b) => a.order - b.order)
   )
@@ -56,6 +56,7 @@ const Goals = (props: GoalsProps) => {
               <GoalCard
                 key={goal.order}
                 goal={goal}
+                goals={goals}
                 data={data}
                 handleGoalChange={handleGoalChange}
               />

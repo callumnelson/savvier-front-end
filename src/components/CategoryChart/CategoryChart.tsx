@@ -19,7 +19,7 @@ interface CategoryChartProps {
 const CategoryChart = (props: CategoryChartProps) => {
   const { profile } = props
   
-  const data = dataService.computeCategoryTrends(profile.profileTransactions)
+  let data = dataService.computeCategoryTrends(profile.profileTransactions)
 
   const colors = randomColor({
     count: data.categories.length, 
