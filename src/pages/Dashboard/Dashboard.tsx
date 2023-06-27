@@ -8,7 +8,7 @@ import SubCategoryChart from '../../components/SubCategoryChart/SubCategoryChart
 
 // types
 import { Profile } from '../../types/models';
-import TopNav from '../../components/PageHeader/PageHeader';
+import PageHeader from '../../components/PageHeader/PageHeader';
 import DashSubNav from '../../components/DashSubNav/DashSubNav';
 import { useState } from 'react';
 import { Chart } from '../../types/data';
@@ -36,7 +36,7 @@ const Dashboard = (props: DashboardProps) => {
 
   return (
     <main className={styles.container}>
-      <TopNav pageName='Dashboard'></TopNav>
+      <PageHeader pageName='Dashboard'></PageHeader>
       <section>
         <DashSubNav
           selectedChart={selectedChart}

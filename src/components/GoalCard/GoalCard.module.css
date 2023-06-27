@@ -1,0 +1,8 @@
+.container {
+  flex-grow: 1;
+  display: flex;
+  min-width: 200px;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid var(--linen);
+}
