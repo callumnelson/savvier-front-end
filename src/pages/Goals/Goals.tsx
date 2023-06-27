@@ -18,22 +18,28 @@ interface GoalsProps {
   profile: Profile;
 }
 
-interface CatOrder {
+interface Goal {
   order: number;
   name: string;
+  goal: number;
 }
 
 const Goals = (props: GoalsProps) => {
   const { profile } = props
-  const [catOrder, setCatOrder] = useState<CatOrder[]>(
+  const [goals, setGoals] = useState<Goal[]>(
     [...profile.categories.map( (c, i) => {
-      return {name: c.name, order: c.name === 'Income' ? -2 : i}
+      return {name: c.name, order: c.name === 'Income' ? -2 : i, goal: c.goal}
     }), {
       order: -1,
-      name: 'Savings'
+      name: 'Savings',
+      goal: 0,
     }].sort((a, b) => a.order - b.order)
   )
   const data = dataService.computeCategoryTrends(profile.profileTransactions)
+
+  const handleGoalChange = (goal: Goal): void => {
+    setGoals(goals.map(g => g.name === goal.name ? goal : g))
+  }
   
   return (
     <main className={styles.container}>
@@ -45,12 +51,13 @@ const Goals = (props: GoalsProps) => {
         <div className={styles.table}>
           <nav> Goals Nav </nav>
           <div className={styles.dataContainer}>
-            {catOrder.map(cat => (
-              !['Exclude', '-'].includes(cat.name) &&
-              <GoalCard 
-                category={cat.name}
+            {goals.map(goal => (
+              !['Exclude', '-'].includes(goal.name) &&
+              <GoalCard
+                key={goal.order}
+                goal={goal}
                 data={data}
-                setCatOrder={setCatOrder}
+                handleGoalChange={handleGoalChange}
               />
             ))}
           </div>

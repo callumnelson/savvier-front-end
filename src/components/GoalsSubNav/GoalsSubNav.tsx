@@ -9,14 +9,14 @@ interface GoalsSubNavProps {
 
 const GoalsSubNav = (props: GoalsSubNavProps) => {
   const { data } = props
-  
+
   return (
     <div className={styles.container}>
       <div>
         <h3>Goal</h3>
       </div>
       <div>
-        <h3>Budget</h3>
+        <h3>Projected</h3>
         <p>Annual</p>
         <p>One Month</p>
       </div>
@@ -28,7 +28,9 @@ const GoalsSubNav = (props: GoalsSubNavProps) => {
       <div>
         <h3>Breakdown</h3>
         {data.months.map(m => (
-          <p>{m}</p>
+          <p
+            key={m}
+          >{m}</p>
         ))}
       </div>
     </div>
