@@ -1,5 +1,5 @@
 // npm modules
-import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar, BarChart } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar, BarChart, ReferenceLine } from 'recharts';
 import randomColor from 'randomcolor'
 
 // types
@@ -47,13 +47,15 @@ const CategoryChart = (props: CategoryChartProps) => {
           <XAxis 
             dataKey="monthString" 
           />
-          <YAxis 
+          <YAxis
             domain={
-              [(dataMin:number) => (Math.floor(dataMin / 2500)*2500), 
-              (dataMax:number) => (Math.ceil(dataMax / 2500)*2500)]
+              [(dataMin:number) => (Math.min(Math.floor(dataMin / 2500) * 2500, -2500)), 
+              (dataMax:number) => (Math.max(Math.ceil(dataMax / 2500)*2500), 2500)]
             }
+
             tickFormatter={(x) => currency(x as number, {precision: 0}).format()}
           />
+          <ReferenceLine y={0} stroke="white" />
           <Tooltip 
             formatter={(x) => currency(x as number, {precision: 0}).format()}
             contentStyle={{ color: '#dfdbd8', backgroundColor: '#303030', fontWeight: 600}}
