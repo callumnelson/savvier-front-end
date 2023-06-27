@@ -98,22 +98,22 @@ const GoalCard = (props: GoalCardProps) => {
         <h3>--</h3>
         <p>
           {goal.name === 'Income' ? 
-            currency(totalIncomeGoal, {precision: 0, negativePattern: `(!#)`}).format()
+            myCurrency(0)
             :
             goal.name === 'Saving' ? 
-              currency(totalSavingGoal * totalIncomeGoal, { precision: 0}).format()
+              myCurrency(0)
               :
-              currency(goal.goal * totalIncomeGoal, {precision: 0}).format()
+              myCurrency(totalCategorySpend)
           }
         </p>
         <p>
           {goal.name === 'Income' ? 
-            currency(totalIncomeGoal / 12, {precision: 0}).format()
+            myCurrency(0 / 12)
             :
             goal.name === 'Saving' ? 
-              currency(totalSavingGoal * totalIncomeGoal / 12, { precision: 0}).format()
+              myCurrency(0 / 12)
               :
-              currency(goal.goal * totalIncomeGoal / 12, {precision: 0}).format()
+              myCurrency(totalCategorySpend / 12)
           }
         </p>
       </div>

@@ -1,9 +1,9 @@
 .container {
   display: flex;
+  padding: 0 15px;
   min-width: 150px;
   align-items: center;
   flex-direction: column;
-  border: 1px solid var(--linen);
 }
 
 .container div {
@@ -19,7 +19,7 @@
 }
 
 .container input {
-  width: 80%;
+  width: 100%;
   padding: 5px 0;
   text-align: center;
 }

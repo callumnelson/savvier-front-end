@@ -31,5 +31,5 @@
 }
 
 .dataContainer > div:nth-child(2) {
-  margin-right: 30px;
+  border-right: 0.5px dashed var(--linen);
 }
