@@ -75,7 +75,7 @@ function App(): JSX.Element {
           <Landing user={user}/>
         }
       />
-      <Route path="/goals" 
+      {/* <Route path="/goals" 
         element={
           profile &&
           <ProtectedRoute user={user}>
@@ -84,7 +84,7 @@ function App(): JSX.Element {
             />
           </ProtectedRoute>
         }
-      />
+      /> */}
       <Route path="/dashboard" 
         element={
           profile &&

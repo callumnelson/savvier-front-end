@@ -40,12 +40,12 @@ const NavBar = (props: NavBarProps): JSX.Element => {
           <h1>{user.name.split(' ')[0]}</h1>
         </div>
         <div className={styles.destinations}>
-          <p className={navPath === 'goals' ? styles.selected: styles.unselected}>
-            <NavLink to="/goals">Goals</NavLink>
-          </p>
           <p className={navPath === 'dashboard' ? styles.selected: styles.unselected}>
             <NavLink to="/dashboard">Insights</NavLink>
           </p>
+          {/* <p className={navPath === 'goals' ? styles.selected: styles.unselected}>
+            <NavLink to="/goals">Goals</NavLink>
+          </p> */}
           <p className={navPath === 'transactions' ? styles.selected: styles.unselected}>
             <NavLink to="/transactions">Transactions</NavLink>
           </p>
