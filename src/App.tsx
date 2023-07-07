@@ -25,7 +25,7 @@ import { Profile, User } from './types/models'
 import Transactions from './pages/Transactions/Transactions'
 import Loading from './pages/Loading/Loading'
 import Schema from './pages/Schema/Schema'
-import Goals from './pages/Goals/Goals'
+// import Goals from './pages/Goals/Goals'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
